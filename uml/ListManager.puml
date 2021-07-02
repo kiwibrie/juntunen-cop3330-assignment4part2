@@ -16,24 +16,25 @@ Item : Collection
 
 AddItem()
 DeleteItem()
-SaveList()
-LoadList()
 SortList()
+SaveList()
+DeleteList()
 }
 
 class Item {
-name : String
 desc : String
-completed : boolean
 duedate : int
+status : boolean
 
-EditName(name)
-EditDesc(desc)
-EditCompletion(boolean)
-EditDueDate(int)
+SetDesc(desc)
+GetDesc()
+SetDueDate(int)
+GetDueDate()
+SetStatus(boolean)
+GetStatus()
 }
 
 ToDoList -- Item
 ListManager -- ToDoList
-
+App -- ListManager
 @enduml

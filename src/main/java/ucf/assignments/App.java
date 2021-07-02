@@ -5,7 +5,8 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
-public class ToDoList {
-    //name
-    //
+public class App {
+    public static void main(String[] args){
+
+    }
 }
