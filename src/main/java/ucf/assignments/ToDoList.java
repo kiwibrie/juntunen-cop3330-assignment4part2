@@ -24,7 +24,7 @@ public class ToDoList {
         //sort by duedate
         //sort by alphabetical
 
-    //display/hide
+    //display/hide *not quite sure the best way to do this yet*
         //complete
         //incomplete
 

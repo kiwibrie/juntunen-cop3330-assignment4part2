@@ -8,7 +8,7 @@ package ucf.assignments;
 public class Item {
     //desc
     //duedate YYYY-MM-DD (int ex. 20210702)
-    //status (complete/incomplete)
+    //status (bool complete/incomplete)
 
     //desc setter
     //desc getter
