@@ -9,6 +9,7 @@ public class Item {
     //desc
     //duedate YYYY-MM-DD (int ex. 20210702)
     //status (bool complete/incomplete)
+        //should auto set to incomplete?
 
     //desc setter
     //desc getter
