@@ -1,16 +1,29 @@
 package ucf.assignments;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+/*
+ *  UCF COP3330 Summer 2021 Assignment 4 Solution
+ *  Copyright 2021 Brianne Juntunen
+ */
 
-public class ListManagerSceneController extends Application {
+import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class ListManagerSceneController {
 
-    @Override
-    public void start(Stage primaryStage) {
+    @FXML
+    private MenuItem SaveList;
 
-    }
+    @FXML
+    private MenuItem LoadList;
+
+    @FXML
+    private MenuItem NewList;
+
+    @FXML
+    private MenuItem DeleteList;
+
+    @FXML
+    private MenuItem HelpPage;
+
 }
+
