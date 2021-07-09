@@ -28,7 +28,7 @@ public class ListManagerScene extends Application {
             Scene scene = new Scene(root);
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Calculator");
+            primaryStage.setTitle("To Do List Manager");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

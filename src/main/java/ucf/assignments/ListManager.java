@@ -5,12 +5,16 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
-public class ListManager {
-    //list of lists
+import java.util.ArrayList;
+import java.util.List;
 
-    //AddList()
-        //create todolist
-        //add todolist to list
+public class ListManager {
+    static List<ToDoList> MasterList;
+
+    public static void AddList(String title){
+        ToDoList list = new ToDoList(title);
+        MasterList.add(list);
+    }
 
     //delete selected list(s)
         //search list for x

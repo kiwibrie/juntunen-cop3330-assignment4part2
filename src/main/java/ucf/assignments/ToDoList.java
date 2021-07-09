@@ -5,12 +5,23 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
-public class ToDoList {
-    //name
-    //list of items
+import java.util.List;
 
-    //name setter
-    //name getter
+public class ToDoList {
+    String name;
+    List<Item> list;
+
+    public ToDoList(String title){
+        this.name = title;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     //add item
         //create item

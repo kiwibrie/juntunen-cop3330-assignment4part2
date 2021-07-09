@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="400.0" minWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerSceneController">
+<AnchorPane minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerSceneController">
    <children>
-      <VBox minHeight="200.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" scaleShape="false">
+      <VBox minHeight="200.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0">
          <children>
             <MenuBar maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="600.0" prefWidth="3000.0">
               <menus>
@@ -27,8 +27,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                   <items>
-                        <MenuItem fx:id="NewList" mnemonicParsing="false" text="New List..." />
-                    <MenuItem fx:id="DeleteList" mnemonicParsing="false" text="Delete List..." />
+                        <MenuItem fx:id="NewList" mnemonicParsing="false" onAction="#NewListMenuClicked" text="New List..." />
+                    <MenuItem fx:id="DeleteList" mnemonicParsing="false" onAction="#DeleteListMenuClicked" text="Delete List..." />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -49,14 +49,14 @@
                                     <Insets bottom="5.0" left="5.0" top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="3000.0" text="Today" textAlignment="CENTER" VBox.vgrow="NEVER" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="3000.0" text="Tomorrow" textAlignment="CENTER" VBox.vgrow="NEVER" />
+                              <Button mnemonicParsing="false" onAction="#TodayButtonClicked" prefHeight="26.0" prefWidth="3000.0" text="Today" textAlignment="CENTER" VBox.vgrow="NEVER" />
+                              <Button fx:id="TomorrowButton" mnemonicParsing="false" onAction="#TomorrowButtonClicked" prefHeight="26.0" prefWidth="3000.0" text="Tomorrow" textAlignment="CENTER" VBox.vgrow="NEVER" />
                               <Label minHeight="18.0" minWidth="60.0" text="My Lists">
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="5.0" top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="3000.0" text="temp list title" />
+                              <Button fx:id="ListButton" mnemonicParsing="false" onAction="#ListButtonClicked" prefHeight="26.0" prefWidth="3000.0" text="My List" />
                            </children>
                         </VBox>
                      </children>
