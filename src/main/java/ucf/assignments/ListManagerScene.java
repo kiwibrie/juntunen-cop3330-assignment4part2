@@ -23,12 +23,12 @@ public class ListManagerScene extends Application {
     @Override
     public void start(Stage primaryStage) {
         try{
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManagerScene.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("testestest.fxml")));
 
             Scene scene = new Scene(root);
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("To Do List Manager");
+            primaryStage.setTitle("To Do List");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

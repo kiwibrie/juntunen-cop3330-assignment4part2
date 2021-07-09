@@ -5,27 +5,32 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
+import javafx.collections.ObservableList;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoList {
     String name;
-    List<Item> list;
+    public static ObservableList<Item> list;
 
     public ToDoList(String title){
         this.name = title;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    //add item
-        //create item
-        //add to end of list
+    public String getName() {
+        return name;
+    }
+
+    public static void AddItem(String description, LocalDate duedate){
+        Item item = new Item(description, duedate);
+        list.add(item);
+    }
 
     //delete item
         //search list for x

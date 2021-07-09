@@ -5,11 +5,42 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
+import java.time.LocalDate;
+
 public class Item {
-    //desc
-    //duedate YYYY-MM-DD (int ex. 20210702)
-    //status (bool complete/incomplete)
-        //should auto set to incomplete?
+    String description;
+    LocalDate duedate;
+    boolean complete; //status
+
+    public Item(String description, LocalDate duedate){
+        setDescription(description);
+        setDuedate(duedate);
+        setStatus(false);
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDuedate(LocalDate duedate) {
+        this.duedate = duedate;
+    }
+
+    public LocalDate getDuedate() {
+        return duedate;
+    }
+
+    public void setStatus(boolean status) {
+        this.complete = status;
+    }
+
+    public boolean getStatus(){
+        return complete;
+    }
 
     //desc setter
     //desc getter
