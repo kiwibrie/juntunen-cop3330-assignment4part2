@@ -1,40 +1,70 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class ListManager {
-ToDoList : Collection
-
-AddList()
-DeleteList()
-SaveList()
-LoadList()
+class ListManager{
+list : List<ToDoList> //masterlist
+--
+saveLists()
+deleteLists()
+loadList()
 }
 
 class ToDoList {
-name : String
-Item : Collection
-
-AddItem()
-DeleteItem()
-SortList()
-SaveList()
-DeleteList()
+list : List<Event>
+title : String
+--
+List(title)
+..Setters/Getters..
+setTitle()
+getTitle()
+..
+saveList()
+deleteList()
+sortListAlphabetical()
+sortListDuedate()
+displayComplete()
+displayIncomplete()
 }
 
-class Item {
+class Event {
 desc : String
-duedate : int
-status : boolean
-
-SetDesc(desc)
-GetDesc()
-SetDueDate(int)
-GetDueDate()
-SetStatus(boolean)
-GetStatus()
+duedate : LocalDate
+completed : boolean
+--
+Event(String, LocalDate)
+..Setters/Getters..
+setDesc()
+getDesc()
+setDuedate()
+getDuedate()
+setCompleted()
+getCompleted()
 }
 
-ToDoList -- Item
-ListManager -- ToDoList
-App -- ListManager
+ToDoList "made up of" -- Event : >
+ListManager "made up of" -- ToDoList : > calls methods from
+
+ToDoListApp -- Controller : > calls
+FXMLfile .. Controller : < controls
+Controller -- ListManager : > calls
+
+class Controller{
+--List Management--
+New List
+?Edit List
+Load List
+Save Lists
+Delete Lists
+--View--
+Sort by Alphabetical
+Sort by Duedate
+Display Complete
+Display Incomplete
+Display All
+--
+New Event
+Edit Event
+Mark Complete/Incomplete
+}
+
 @enduml
