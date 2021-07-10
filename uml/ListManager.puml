@@ -11,7 +11,7 @@ loadList()
 
 class java.ToDoList {
 list : List<Event>
-title : String
+-title : String
 --
 List(title)
 ..Setters/Getters..
@@ -27,9 +27,9 @@ displayIncomplete()
 }
 
 class java.Event {
-desc : String
-duedate : int //MMDDYYYY
-completed : boolean
+-desc : String
+-duedate : int //MMDDYYYY
+-completed : boolean
 --
 Event(String, LocalDate)
 ..Setters/Getters..
