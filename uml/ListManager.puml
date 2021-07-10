@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class ListManager{
+class java.ListManager{
 list : List<ToDoList> //masterlist
 --
 saveLists()
@@ -9,7 +9,7 @@ deleteLists()
 loadList()
 }
 
-class ToDoList {
+class java.ToDoList {
 list : List<Event>
 title : String
 --
@@ -26,7 +26,7 @@ displayComplete()
 displayIncomplete()
 }
 
-class Event {
+class java.Event {
 desc : String
 duedate : LocalDate
 completed : boolean
@@ -41,14 +41,15 @@ setCompleted()
 getCompleted()
 }
 
-ToDoList "made up of" -- Event : >
-ListManager "made up of" -- ToDoList : > calls methods from
+java.ToDoList "made up of" -- java.Event : >
+java.ListManager "made up of" -- java.ToDoList : > calls methods from
 
-ToDoListApp -- Controller : > calls
-FXMLfile .. Controller : < controls
-Controller -- ListManager : > calls
+java.ToDoListApp -- java.Controller : > calls
+resources.FXMLfile .. java.Controller : < controls
+java.Controller -- java.ListManager : > calls
 
-class Controller{
+
+class java.Controller{
 --List Management--
 New List
 ?Edit List
@@ -65,6 +66,11 @@ Display All
 New Event
 Edit Event
 Mark Complete/Incomplete
+}
+
+class java.ToDoListApp{
+main()
+start()
 }
 
 @enduml

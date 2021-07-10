@@ -5,14 +5,12 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class ToDoList {
-    private List<Item> list;
+    private final List<Item> list;
     private String title;
 
     public ToDoList(String title) {
@@ -46,9 +44,9 @@ public class ToDoList {
 
     public List<Item> DisplayComplete(){
         List<Item> completeEvents = new ArrayList<>();
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).getCompleted()){
-                completeEvents.add(list.get(i));
+        for (Item item : list) {
+            if (item.getCompleted()) {
+                completeEvents.add(item);
             }
         }
         return completeEvents;
@@ -56,9 +54,9 @@ public class ToDoList {
 
     public List<Item> DisplayIncomplete(){
         List<Item> incompleteEvents = new ArrayList<>();
-        for(int i = 0; i < list.size(); i++){
-            if(!list.get(i).getCompleted()){
-                incompleteEvents.add(list.get(i));
+        for (Item item : list) {
+            if (!item.getCompleted()) {
+                incompleteEvents.add(item);
             }
         }
         return incompleteEvents;

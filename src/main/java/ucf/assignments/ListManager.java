@@ -12,10 +12,10 @@ public class ListManager {
     List<ToDoList> MasterList = new ArrayList<>();
 
     public void SaveLists(List<ToDoList> selected){
-        for(int i = 0; i < selected.size(); i++){
-            for(int j = 0; j < MasterList.size(); j++){
-                if(selected.get(i) == MasterList.get(j)){
-                    MasterList.get(j).SaveList();
+        for (ToDoList selectedList : selected) {
+            for (ToDoList todoList : MasterList) {
+                if (selectedList == todoList) {
+                    todoList.SaveList();
                 }
             }
         }
@@ -23,10 +23,10 @@ public class ListManager {
     }
 
     public void DeleteLists(List<ToDoList> selected){
-        for(int i = 0; i < selected.size(); i++){
-            for(int j = 0; j < MasterList.size(); j++){
-                if(selected.get(i) == MasterList.get(j)){
-                    MasterList.get(j).DeleteList();
+        for (ToDoList selectedList : selected) {
+            for (ToDoList todoList : MasterList) {
+                if (selectedList == todoList) {
+                    todoList.DeleteList();
                 }
             }
         }
@@ -34,15 +34,18 @@ public class ListManager {
     }
 
     private void RemoveSelection(List<ToDoList> selected){
-        for(int i = 0; i < selected.size(); i++){
-            selected.get(i).DeleteList();
+        for (ToDoList toDoList : selected) {
+            toDoList.DeleteList();
         }
     }
 
-    public void LoadList(){
+    public void LoadList() {
         //todo: LoadList(). needs to read from file
         //read info from file
         //String title = (read from file);
+        //while(there is next line) {
+            //create new item from line
+        //}
         //ToDoList createdToDoList = new ToDoList(title);
         //MasterList.add(createdToDoList);
     }
