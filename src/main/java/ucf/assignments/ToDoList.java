@@ -5,50 +5,62 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
-import javafx.collections.ObservableList;
-
-import java.time.LocalDate;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ToDoList {
-    String name;
-    public static ObservableList<Item> list;
+    private List<Item> list;
+    private String title;
 
-    public ToDoList(String title){
-        this.name = title;
+    public ToDoList(String title) {
+        setTitle(title);
+        list = new ArrayList<>();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public static void AddItem(String description, LocalDate duedate){
-        Item item = new Item(description, duedate);
-        list.add(item);
+    public void SaveList(){
+        //todo: SaveList(). needs to write to file
     }
 
-    //delete item
-        //search list for x
-        //delete x
+    public void DeleteList(){
+        list.clear();
+    }
 
-    //sort list
-        //sort by duedate
-        //sort by alphabetical
+    public void SortListAlphabetical(){
+        list.sort(Comparator.comparing(Item::getDescription));
+    }
 
-    //display/hide *not quite sure the best way to do this yet*
-        //complete
-        //incomplete
+    public void SortListDuedate(){
+        list.sort(Comparator.comparing(Item::getDuedate));
+    }
 
-    //save list
-        //convert each item to format
-        //export
+    public List<Item> DisplayComplete(){
+        List<Item> completeEvents = new ArrayList<>();
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getCompleted()){
+                completeEvents.add(list.get(i));
+            }
+        }
+        return completeEvents;
+    }
 
-    //delete list
-        //delete every item
-        //delete empty list
+    public List<Item> DisplayIncomplete(){
+        List<Item> incompleteEvents = new ArrayList<>();
+        for(int i = 0; i < list.size(); i++){
+            if(!list.get(i).getCompleted()){
+                incompleteEvents.add(list.get(i));
+            }
+        }
+        return incompleteEvents;
+    }
 }

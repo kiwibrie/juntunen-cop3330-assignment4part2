@@ -8,14 +8,14 @@ package ucf.assignments;
 import java.time.LocalDate;
 
 public class Item {
-    String description;
-    LocalDate duedate;
-    boolean complete; //status
+    private String description;
+    private LocalDate duedate;
+    private boolean completed;
 
-    public Item(String description, LocalDate duedate){
-        setDescription(description);
+    public Item(String desc, LocalDate duedate){
+        setDescription(desc);
         setDuedate(duedate);
-        setStatus(false);
+        setCompleted(false);
     }
 
     public void setDescription(String description) {
@@ -34,21 +34,11 @@ public class Item {
         return duedate;
     }
 
-    public void setStatus(boolean status) {
-        this.complete = status;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
-    public boolean getStatus(){
-        return complete;
+    public boolean getCompleted() {
+        return completed;
     }
-
-    //desc setter
-    //desc getter
-
-    //duedate setter
-        //check validity (good month, good day)
-    //dudeate getter
-
-    //status setter
-    //status getter
 }

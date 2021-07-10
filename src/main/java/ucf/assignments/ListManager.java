@@ -9,25 +9,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListManager {
-    static List<ToDoList> MasterList;
+    List<ToDoList> MasterList = new ArrayList<>();
 
-    public static void AddList(String title){
-        ToDoList list = new ToDoList(title);
-        MasterList.add(list);
+    public void SaveLists(List<ToDoList> selected){
+        for(int i = 0; i < selected.size(); i++){
+            for(int j = 0; j < MasterList.size(); j++){
+                if(selected.get(i) == MasterList.get(j)){
+                    MasterList.get(j).SaveList();
+                }
+            }
+        }
+        RemoveSelection(selected);
     }
 
-    //delete selected list(s)
-        //search list for x
-        //call that list's delete method
-        //repeat for every selected list
+    public void DeleteLists(List<ToDoList> selected){
+        for(int i = 0; i < selected.size(); i++){
+            for(int j = 0; j < MasterList.size(); j++){
+                if(selected.get(i) == MasterList.get(j)){
+                    MasterList.get(j).DeleteList();
+                }
+            }
+        }
+        RemoveSelection(selected);
+    }
 
-    //save selected list(s)
-        //search list for x
-        //call that list's save method
-        //repeat for every selected list
+    private void RemoveSelection(List<ToDoList> selected){
+        for(int i = 0; i < selected.size(); i++){
+            selected.get(i).DeleteList();
+        }
+    }
 
-    //load list(s) from storage
-        //read data from external file
-        //AddList() using the translated data
-        //repeat for every list in file
+    public void LoadList(){
+        //todo: LoadList(). needs to read from file
+        //read info from file
+        //String title = (read from file);
+        //ToDoList createdToDoList = new ToDoList(title);
+        //MasterList.add(createdToDoList);
+    }
+
 }
+
