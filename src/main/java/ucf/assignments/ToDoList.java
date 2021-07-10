@@ -5,9 +5,12 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class ToDoList {
     private final List<Item> list;
@@ -26,8 +29,36 @@ public class ToDoList {
         return title;
     }
 
+    public void AddItem(Item item){
+        list.add(item);
+    }
+
     public void SaveList(){
-        //todo: SaveList(). needs to write to file
+        //using Gson
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get("ToDoList_"+getTitle()+".json"));
+
+            Map<String, Object> savedlist = new HashMap<>();
+            savedlist.put("title", getTitle());
+
+            Map<String, Object> items = new HashMap<>();
+            for(int i = 0; i < list.size(); i++){
+                Map<String, Object> item = new HashMap<>();
+                item.put("desc", list.get(i).getDescription());
+                item.put("duedate", list.get(i).getDuedate());
+                item.put("completed", list.get(i).getCompleted());
+                items.put("item"+i, item);
+            }
+
+            Gson gson = new Gson();
+
+            // write JSON to file
+            writer.write(gson.toJson(savedlist));
+
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void DeleteList(){

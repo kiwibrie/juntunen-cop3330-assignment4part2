@@ -5,17 +5,15 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
-import java.time.LocalDate;
-
 public class Item {
     private String description;
-    private LocalDate duedate;
+    private int duedate;
     private boolean completed;
 
-    public Item(String desc, LocalDate duedate){
+    public Item(String desc, String duedate, boolean completed){
         setDescription(desc);
-        setDuedate(duedate);
-        setCompleted(false);
+        setDuedate(Integer.parseInt(duedate));
+        setCompleted(completed);
     }
 
     public void setDescription(String description) {
@@ -26,11 +24,11 @@ public class Item {
         return description;
     }
 
-    public void setDuedate(LocalDate duedate) {
+    public void setDuedate(int duedate) {
         this.duedate = duedate;
     }
 
-    public LocalDate getDuedate() {
+    public int getDuedate() {
         return duedate;
     }
 

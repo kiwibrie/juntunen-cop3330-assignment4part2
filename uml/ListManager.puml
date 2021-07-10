@@ -28,7 +28,7 @@ displayIncomplete()
 
 class java.Event {
 desc : String
-duedate : LocalDate
+duedate : int //MMDDYYYY
 completed : boolean
 --
 Event(String, LocalDate)
