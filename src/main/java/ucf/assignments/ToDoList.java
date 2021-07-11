@@ -65,12 +65,16 @@ public class ToDoList {
         list.clear();
     }
 
-    public void SortListAlphabetical(){
-        list.sort(Comparator.comparing(Item::getDescription));
+    public List<Item> SortListAlphabetical(){
+        List<Item> sortedlist = list;
+        sortedlist.sort(Comparator.comparing(Item::getDescription));
+        return sortedlist;
     }
 
-    public void SortListDuedate(){
-        list.sort(Comparator.comparing(Item::getDuedate));
+    public List<Item> SortListDuedate(){
+        List<Item> sortedlist = list;
+        sortedlist.sort(Comparator.comparing(Item::getDuedate));
+        return sortedlist;
     }
 
     public List<Item> DisplayComplete(){

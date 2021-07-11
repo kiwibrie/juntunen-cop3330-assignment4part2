@@ -23,7 +23,7 @@ public class ToDoListApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ToDoListApplication.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManagerApplication.fxml")));
 
             Scene scene = new Scene(root);
 
