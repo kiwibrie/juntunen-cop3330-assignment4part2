@@ -32,6 +32,7 @@ public class ToDoListApplication extends Application {
             primaryStage.setResizable(false);
             primaryStage.setTitle("To Do List");
             primaryStage.show();
+            ListManagerApplicationController.setup();
         } catch (IOException e) {
             e.printStackTrace();
         }

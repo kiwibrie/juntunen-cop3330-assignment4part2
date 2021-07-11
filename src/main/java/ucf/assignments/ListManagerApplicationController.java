@@ -6,6 +6,7 @@ package ucf.assignments;
  */
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +16,17 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
+import java.util.Observable;
 
 public class ListManagerApplicationController {
+    private static final ListManager masterlistmasterlist = new ListManager();
+    public static void setup(){
+        masterlistmasterlist.AddList("New List");
+    }
+
+    //PRIMARY SCENE
     @FXML public MenuItem EditItem;
     @FXML public CheckMenuItem SortDueDate;
     @FXML public CheckMenuItem SortAlphabetical;
@@ -77,7 +86,8 @@ public class ListManagerApplicationController {
     //LIST SIDE
     @FXML
     public void NewListClicked(ActionEvent actionEvent) {
-        //open a new window for creating a list
+        masterlistmasterlist.AddList("New List");
+        updateListViewer();
     }
 
     //ITEM SIDE - EDIT
@@ -160,15 +170,31 @@ public class ListManagerApplicationController {
     //ITEM SIDE - ITEMS
     @FXML
     public void ToggleCompletedClicked(ActionEvent actionEvent) {
+
     }
 
     @FXML
     public void EditItemClicked(ActionEvent actionEvent) {
+        Item thisitem = masterlistmasterlist.getList(0).getItem(ItemViewer.getEditingIndex());
+
     }
 
     @FXML
     public void DeleteItemClicked(ActionEvent actionEvent) {
+        Item thisitem = masterlistmasterlist.getList(0).getItem(ItemViewer.getEditingIndex());
+        masterlistmasterlist.getList(0).DeleteItem(thisitem);
     }
+
+    @FXML
+    public void updateListViewer(){
+        ListViewer.setItems((ObservableList) masterlistmasterlist.MasterList);
+    }
+
+    @FXML
+    public void updateItemViewer(ToDoList thislist){
+        ItemViewer.setItems((ObservableList) thislist);
+    }
+
 
 
     //CREATE NEW ITEM SCENE
@@ -185,8 +211,8 @@ public class ListManagerApplicationController {
         String date = DueDateBox.toString();
         boolean completed = CompletedBox.isSelected();
         Item newitem = new Item(desc, date, completed);
-        //todo add new item to list and update viewer
-
+        masterlistmasterlist.getList(0).AddItem(newitem);
+        updateItemViewer(masterlistmasterlist.getList(0));
         Stage stage = (Stage) AddItem.getScene().getWindow();
         stage.close();
     }

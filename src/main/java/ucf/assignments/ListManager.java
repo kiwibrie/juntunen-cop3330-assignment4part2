@@ -27,11 +27,11 @@ public class ListManager {
         MasterList.add(list);
     }
 
-    public void SaveLists(List<ToDoList> selected){
+    public void SaveLists(List<ToDoList> selected, String path){
         for (ToDoList selectedList : selected) {
             for (ToDoList todoList : MasterList) {
                 if (selectedList == todoList) {
-                    todoList.SaveList();
+                    todoList.SaveList(path);
                 }
             }
         }

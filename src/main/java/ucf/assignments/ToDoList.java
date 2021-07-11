@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import java.io.BufferedWriter;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -18,7 +19,6 @@ public class ToDoList {
 
     public ToDoList(String title) {
         setTitle(title);
-        list = new ArrayList<>();
     }
 
     public void setTitle(String title) {
@@ -41,9 +41,10 @@ public class ToDoList {
         list.remove(item);
     }
 
-    public void SaveList(){
+    public void SaveList(String path){
         //using Gson
         try {
+            //todo make a path and create ToDoList_Title.json
             BufferedWriter writer = Files.newBufferedWriter(Paths.get("ToDoList_"+getTitle()+".json"));
 
             Map<String, Object> savedlist = new HashMap<>();
