@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ItemTest {
-    Item item = new Item("desc", "01011970", false);
+    Item item = new Item("desc", "19700101", false);
 
     @Test
     public void getdesc(){
@@ -24,12 +24,12 @@ class ItemTest {
 
     @Test
     public void getduedate(){
-        assertEquals("01011970", item.getDuedate());
+        assertEquals("19700101", item.getDuedate());
     }
     @Test
     public void setduedate(){
-        item.setDuedate("07112021");
-        assertEquals("07112021", item.getDuedate());
+        item.setDuedate("20210711");
+        assertEquals("20210711", item.getDuedate());
     }
 
     @Test

@@ -26,13 +26,13 @@ class ToDoListTest {
     public void getitem(){
         additem();
         assertEquals("desc", list.getItem(0).getDescription());
-        assertEquals("01011970", list.getItem(0).getDuedate());
+        assertEquals("19700101", list.getItem(0).getDuedate());
         assertFalse(list.getItem(0).getCompleted());
     }
 
     @Test
     public void additem(){
-        Item item = new Item("desc", "01011970", false);
+        Item item = new Item("desc", "19700101", false);
         list.AddItem(item);
     }
 
@@ -45,35 +45,35 @@ class ToDoListTest {
 
     @Test
     public void sortalpha(){
-        Item shouldbefirst = new Item("alpha", "07112021", false);
-        list.AddItem(new Item("omega", "01011970", true));
-        list.AddItem(new Item("beta", "07102021", false));
+        Item shouldbefirst = new Item("alpha", "20210711", false);
+        list.AddItem(new Item("omega", "19700101", true));
+        list.AddItem(new Item("beta", "20210710", false));
         list.AddItem(shouldbefirst);
         assertEquals(shouldbefirst, list.SortListAlphabetical().get(0));
     }
 
     @Test
     public void sortduedate(){
-        Item shouldbefirst = new Item("omega", "01011970", true);
-        list.AddItem(new Item("alpha", "07112021", false));
-        list.AddItem(new Item("beta", "07102021", false));
+        Item shouldbefirst = new Item("omega", "19700101", true);
+        list.AddItem(new Item("alpha", "20210711", false));
+        list.AddItem(new Item("beta", "20210710", false));
         list.AddItem(shouldbefirst);
         assertEquals(shouldbefirst, list.SortListDuedate().get(0));
     }
 
     @Test
     public void displaycomplete(){
-        list.AddItem(new Item("alpha", "07112021", false));
-        list.AddItem(new Item("beta", "07102021", false));
-        list.AddItem(new Item("omega", "01011970", true));
+        list.AddItem(new Item("alpha", "20210711", false));
+        list.AddItem(new Item("beta", "20210710", false));
+        list.AddItem(new Item("omega", "19700101", true));
         assertEquals(1, list.DisplayComplete().size());
     }
 
     @Test
     public void displayincomplete(){
-        list.AddItem(new Item("alpha", "07112021", false));
-        list.AddItem(new Item("beta", "07102021", false));
-        list.AddItem(new Item("omega", "01011970", true));
+        list.AddItem(new Item("alpha", "20210711", false));
+        list.AddItem(new Item("beta", "20210710", false));
+        list.AddItem(new Item("omega", "19700101", true));
         assertEquals(2, list.DisplayIncomplete().size());
     }
 
