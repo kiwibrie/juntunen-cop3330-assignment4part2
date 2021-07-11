@@ -82,9 +82,18 @@ public class ListManagerApplicationController {
     //ITEM SIDE - EDIT
     @FXML
     public void NewItemClicked(ActionEvent actionEvent) {
-        //open a window for creating an item
-        //allow user to edit whatever
-        //todo: when button in window is clicked, write information and create list
+        try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateItemScene.fxml")));
+            Scene scene = new Scene(root);
+            Stage createitemstage = new Stage();
+
+            createitemstage.setScene(scene);
+            createitemstage.setResizable(false);
+            createitemstage.setTitle("New Item");
+            createitemstage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
