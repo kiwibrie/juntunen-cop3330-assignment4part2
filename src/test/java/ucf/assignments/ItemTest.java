@@ -21,6 +21,14 @@ class ItemTest {
         item.setDescription("changed description");
         assertEquals("changed description", item.getDescription());
     }
+    @Test
+    public void setlongdesc(){
+        String teststring = "THIS STRING IS 256 CHARACTERS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxLAST"
+                +"ADDING CHARACTERS FOR GOOD MEASURE"; //https://gist.github.com/hishma/10153402
+        item.setDescription(teststring);
+        assertNotEquals(teststring, item.getDescription());
+        System.out.print(item.getDescription()+"\n");
+    }
 
     @Test
     public void getduedate(){

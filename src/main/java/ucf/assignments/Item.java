@@ -17,7 +17,11 @@ public class Item {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        if(description.length() <= 256){
+            this.description = description;
+        } else {
+            this.description = description.substring(0,256);
+        }
     }
 
     public String getDescription() {
