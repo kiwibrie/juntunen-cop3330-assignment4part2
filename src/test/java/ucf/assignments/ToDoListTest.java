@@ -77,7 +77,20 @@ class ToDoListTest {
         assertEquals(2, list.GetIncomplete().size());
     }
 
-    //todo save list to file
+    @Test
+    public void savelist(){
+        ToDoList testsave = new ToDoList("TEST Save");
+        testsave.AddItem(new Item("item1", "19700101", false));
+        testsave.AddItem(new Item("item2", "20210711", true));
+        testsave.SaveList("Downloads");
+        //todo savelist passes the test but doesnt actually save anything.
+    }
+
+    @Test
+    public void loadlist(){
+        list.LoadList("C:\\Users\\brian\\Desktop");
+        System.out.print(list.getTitle());
+    }
 
     @Test
     public void clearlist(){

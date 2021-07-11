@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController">
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController2">
    <children>
       <VBox layoutX="143.0" layoutY="200.0" prefHeight="600.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -70,7 +70,7 @@
                                     <Insets left="10.0" />
                                 </GridPane.margin>
                              </Label>
-                           <Label prefHeight="79.0" prefWidth="292.0" text="Click the &quot;Add List&quot; button at the bottom left of the screen. " wrapText="true" GridPane.columnIndex="1" />
+                           <Label prefHeight="79.0" prefWidth="292.0" text="Click the &quot;Add List&quot; button at the bottom left of the screen. NVM THIS ISN'T INCLUDED ANYMORE!" wrapText="true" GridPane.columnIndex="1" />
                            <Label text="New Item" GridPane.rowIndex="1">
                               <GridPane.margin>
                                  <Insets left="10.0" />
@@ -98,7 +98,7 @@
                                  <Insets left="10.0" />
                               </GridPane.margin>
                            </Label>
-                           <Label text="Remove every item. Sorry!" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <Label text="Click Edit. Click &quot;Delete List.&quot;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            <Label text="Right click the selected item and select &quot;Edit Item&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                            <Label text="Right click the selected item and select &quot;Edit Item&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                            <Label text="Mark Complete" wrapText="true" GridPane.rowIndex="6">
