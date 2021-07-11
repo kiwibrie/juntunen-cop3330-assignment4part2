@@ -6,6 +6,7 @@ package ucf.assignments;
  */
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,12 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Observable;
+import java.util.*;
 
 public class ListManagerApplicationController {
     private static final ListManager masterlistmasterlist = new ListManager();
@@ -42,8 +43,8 @@ public class ListManagerApplicationController {
     @FXML public MenuItem SaveList;
     @FXML public MenuItem CloseApp;
     @FXML public MenuItem EditList;
-    @FXML public ListView ItemViewer;
-    @FXML public ListView ListViewer;
+    @FXML public ListView<Item> ItemViewer;
+    @FXML public ListView<ToDoList> ListViewer;
     @FXML public CheckMenuItem ShowComplete;
     @FXML public CheckMenuItem ShowIncomplete;
 
@@ -56,7 +57,18 @@ public class ListManagerApplicationController {
     //EDIT
     @FXML
     public void SaveListClicked(ActionEvent actionEvent) {
+        try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DirectoryScene.fxml")));
+            Scene scene = new Scene(root);
+            Stage directorystage = new Stage();
 
+            directorystage.setScene(scene);
+            directorystage.setResizable(false);
+            directorystage.setTitle("Choose Path");
+            directorystage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -114,11 +126,10 @@ public class ListManagerApplicationController {
         SortDueDate.setSelected(false);
 
         if(SortAlphabetical.isSelected()){
-            //for the current list, display sorted alpha list
-            //update ItemViewer
+            ToDoList alphalist = (ToDoList) masterlistmasterlist.getList(0).SortListAlphabetical();
+            updateItemViewer(alphalist);
         } else {
-            //for the current list, display unsorted list
-            //update ItemViewer
+            updateItemViewer(masterlistmasterlist.getList(0));
         }
     }
 
@@ -127,11 +138,10 @@ public class ListManagerApplicationController {
         SortAlphabetical.setSelected(false);
 
         if(SortDueDate.isSelected()){
-            //for the current list, display sorted due date list
-            //update ItemViewer
+            ToDoList duedatelist = (ToDoList) masterlistmasterlist.getList(0).SortListDuedate();
+            updateItemViewer(duedatelist);
         } else {
-            //for the current list, display unsorted list
-            //update ItemViewer
+            updateItemViewer(masterlistmasterlist.getList(0));
         }
     }
 
@@ -140,11 +150,10 @@ public class ListManagerApplicationController {
         ShowIncomplete.setSelected(false);
 
         if(ShowComplete.isSelected()){
-            //for the current list, display complete items
-            //update ItemViewer
+            ToDoList complist = (ToDoList) masterlistmasterlist.getList(0).GetComplete();
+            updateItemViewer(complist);
         } else {
-            //for the current list, display entire list
-            //update ItemViewer
+            updateItemViewer(masterlistmasterlist.getList(0));
         }
     }
 
@@ -153,11 +162,10 @@ public class ListManagerApplicationController {
         ShowComplete.setSelected(false);
 
         if(ShowIncomplete.isSelected()){
-            //for the current list, display incomplete items
-            //update ItemViewer
+            ToDoList incomplist = (ToDoList) masterlistmasterlist.getList(0).GetIncomplete();
+            updateItemViewer(incomplist);
         } else {
-            //for the current list, display entire list
-            //update ItemViewer
+            updateItemViewer(masterlistmasterlist.getList(0));
         }
     }
 
@@ -202,12 +210,12 @@ public class ListManagerApplicationController {
 
     @FXML
     public void updateListViewer(){
-        ListViewer.setItems((ObservableList) masterlistmasterlist.MasterList);
+        ListViewer.setItems((ObservableList<ToDoList>) masterlistmasterlist.MasterList);
     }
 
     @FXML
-    public void updateItemViewer(ToDoList thislist){
-        ItemViewer.setItems((ObservableList) thislist);
+    public void updateItemViewer(ToDoList list){
+        ItemViewer.setItems((ObservableList<Item>) list);
     }
 
 
@@ -250,5 +258,16 @@ public class ListManagerApplicationController {
         updateItemViewer(masterlistmasterlist.getList(0));
         Stage stage = (Stage) SaveChanges.getScene().getWindow();
         stage.close();
+    }
+
+    //SAVE AND LOAD STUFF
+    @FXML public TextField DirectoryTextBox;
+    @FXML public Button PathOK;
+
+    @FXML
+    public void PathOKClicked() {
+        List<ToDoList> list = new ArrayList<>();
+        list.add(masterlistmasterlist.getList(0));
+        masterlistmasterlist.SaveLists(list, DirectoryTextBox.getText());
     }
 }
