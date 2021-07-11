@@ -4,6 +4,7 @@
 class java.ListManager{
 list : List<ToDoList> //masterlist
 --
+getList()
 AddList()
 SaveLists()
 DeleteLists()
@@ -15,6 +16,7 @@ list : List<Event>
 -title : String
 --
 List(title)
+getItem()
 ..Setters/Getters..
 setTitle()
 getTitle()

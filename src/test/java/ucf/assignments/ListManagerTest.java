@@ -16,6 +16,12 @@ class ListManagerTest {
     ListManager masterlist = new ListManager();
 
     @Test
+    public void getlist(){
+        masterlist.AddList("title");
+        assertEquals(masterlist.MasterList.get(0).getTitle(), masterlist.getList(0).getTitle());
+    }
+
+    @Test
     public void addlist(){
         masterlist.AddList("title");
         assertEquals("title", masterlist.MasterList.get(0).getTitle());
@@ -32,6 +38,12 @@ class ListManagerTest {
     }
 
     //test SaveList() (should go through todolist)
+    public void savelist(){
+        //todo: savelist test in ListManagerTest.java
+    }
 
     //test LoadList() (should go through todolist)
+    public void loadlist(){
+        //todo: loadlist test in ListManagerTest.java
+    }
 }
