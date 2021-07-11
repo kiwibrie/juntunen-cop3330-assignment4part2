@@ -9,7 +9,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 
 public class ListManagerApplicationController {
     @FXML public MenuItem EditItem;
@@ -28,7 +27,6 @@ public class ListManagerApplicationController {
     @FXML public MenuItem EditList;
     @FXML public ListView ItemViewer;
     @FXML public ListView ListViewer;
-    @FXML public AnchorPane AppAnchorPane;
 
     //FILE
     @FXML
@@ -70,12 +68,28 @@ public class ListManagerApplicationController {
 
     @FXML
     public void SortAlphaClicked(ActionEvent actionEvent) {
-        //for the current list, display sorted alpha list
+        SortDueDate.setSelected(false);
+
+        if(SortAlphabetical.isSelected()){
+            //for the current list, display sorted alpha list
+            //update ItemViewer
+        } else {
+            //for the current list, display unsorted list
+            //update ItemViewer
+        }
     }
 
     @FXML
     public void SortDueDateClicked(ActionEvent actionEvent) {
-        //for the current list, display sorted due date list
+        SortAlphabetical.setSelected(false);
+
+        if(SortDueDate.isSelected()){
+            //for the current list, display sorted due date list
+            //update ItemViewer
+        } else {
+            //for the current list, display unsorted list
+            //update ItemViewer
+        }
     }
 
     @FXML

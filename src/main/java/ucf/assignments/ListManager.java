@@ -37,7 +37,7 @@ public class ListManager {
         for (ToDoList selectedList : selected) {
             for (ToDoList todoList : MasterList) {
                 if (selectedList == todoList) {
-                    todoList.DeleteList();
+                    todoList.ClearList();
                 }
             }
         }
@@ -46,7 +46,7 @@ public class ListManager {
 
     private void RemoveSelection(List<ToDoList> selected){
         for (ToDoList toDoList : selected) {
-            toDoList.DeleteList();
+            toDoList.ClearList();
         }
     }
 

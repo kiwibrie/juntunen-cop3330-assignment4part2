@@ -5,16 +5,40 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ItemTest {
+    Item item = new Item("desc", "01011970", false);
 
-    //test set desc
-    //test access desc
+    @Test
+    public void getdesc(){
+        assertEquals("desc", item.getDescription());
+    }
+    @Test
+    public void setdesc(){
+        item.setDescription("changed description");
+        assertEquals("changed description", item.getDescription());
+    }
 
-    //test set due date
-    //test access due date
+    @Test
+    public void getduedate(){
+        assertEquals("01011970", item.getDuedate());
+    }
+    @Test
+    public void setduedate(){
+        item.setDuedate("07112021");
+        assertEquals("07112021", item.getDuedate());
+    }
 
-    //test set status
-    //test access status
+    @Test
+    public void getstatus(){
+        assertFalse(item.getCompleted());
+    }
+    @Test
+    public void setstatus(){
+        item.setCompleted(true);
+        assertTrue(item.getCompleted());
+    }
 }

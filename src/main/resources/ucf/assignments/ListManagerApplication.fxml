@@ -17,8 +17,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AppAnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController">
-    <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController">
+    <VBox prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <MenuBar>
             <Menu mnemonicParsing="false" text="File">
                 <MenuItem fx:id="CloseApp" mnemonicParsing="false" onAction="#CloseAppClicked" text="Close" />
@@ -43,12 +43,12 @@
                 <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0">
                <HBox prefHeight="54.0" prefWidth="605.0">
                   <children>
-                           <Label fx:id="ListTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="540.0" textAlignment="CENTER">
+                           <Label fx:id="ListTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="529.0" textAlignment="CENTER">
                                <font>
                                    <Font size="18.0" />
                                </font>
                         <padding>
-                           <Insets left="65.0" />
+                           <Insets left="80.0" />
                         </padding>
                         <HBox.margin>
                            <Insets top="5.0" />

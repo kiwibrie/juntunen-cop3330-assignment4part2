@@ -30,7 +30,7 @@ DisplayIncomplete()
 
 class java.Item {
 -desc : String
--duedate : int //MMDDYYYY
+-duedate : long //MMDDYYYY
 -completed : boolean
 --
 Event(String, LocalDate)

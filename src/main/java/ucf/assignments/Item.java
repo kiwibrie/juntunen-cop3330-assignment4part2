@@ -6,13 +6,13 @@ package ucf.assignments;
  */
 
 public class Item {
-    private String description;
-    private int duedate;
+    private String description; //max 256
+    private String duedate; //YYYY-MM-DD
     private boolean completed;
 
     public Item(String desc, String duedate, boolean completed){
         setDescription(desc);
-        setDuedate(Integer.parseInt(duedate));
+        setDuedate(duedate);
         setCompleted(completed);
     }
 
@@ -24,11 +24,11 @@ public class Item {
         return description;
     }
 
-    public void setDuedate(int duedate) {
+    public void setDuedate(String duedate) {
         this.duedate = duedate;
     }
 
-    public int getDuedate() {
+    public String getDuedate() {
         return duedate;
     }
 

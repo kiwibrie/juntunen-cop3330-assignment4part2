@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class ToDoList {
-    private final List<Item> list;
+    public List<Item> list;
     private String title;
 
     public ToDoList(String title) {
@@ -29,8 +29,16 @@ public class ToDoList {
         return title;
     }
 
+    public Item getItem(int x){
+        return list.get(x);
+    }
+
     public void AddItem(Item item){
         list.add(item);
+    }
+
+    public void DeleteItem(Item item){
+        list.remove(item);
     }
 
     public void SaveList(){
@@ -61,7 +69,7 @@ public class ToDoList {
         }
     }
 
-    public void DeleteList(){
+    public void ClearList(){
         list.clear();
     }
 
