@@ -1,18 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class java.ListManager{
-list : List<ToDoList> //masterlist
---
-AddList()
-SaveLists()
-DeleteLists()
-LoadList()
-..internal use..
-getList()
-RemoveSelection()
-}
-
 class java.ToDoList {
 list : List<Event>
 -title : String
@@ -24,6 +12,7 @@ getTitle()
 ..
 AddItem()
 SaveList()
+LoadList()
 DeleteList()
 SortListAlphabetical()
 SortListDuedate()
@@ -48,11 +37,10 @@ GetCompleted()
 }
 
 java.ToDoList "made up of" -- java.Item : >
-java.ListManager "made up of" -- java.ToDoList : > calls methods from
 
 java.ToDoListApp -- java.Controller : > calls
 resources.FXMLfile .. java.Controller : < controls
-java.Controller -- java.ListManager : > calls
+java.Controller -- java.ToDoList : > calls
 
 
 class java.Controller{
