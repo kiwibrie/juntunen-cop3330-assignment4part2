@@ -18,6 +18,10 @@ import java.util.List;
 public class ListManager {
     List<ToDoList> MasterList = new ArrayList<>();
 
+    public void AddList(String title){
+        ToDoList list = new ToDoList(title);
+    }
+
     public void SaveLists(List<ToDoList> selected){
         for (ToDoList selectedList : selected) {
             for (ToDoList todoList : MasterList) {

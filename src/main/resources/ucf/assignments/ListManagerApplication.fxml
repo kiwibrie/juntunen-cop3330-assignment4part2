@@ -13,13 +13,11 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController">
+<AnchorPane fx:id="AppAnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController">
     <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <MenuBar>
             <Menu mnemonicParsing="false" text="File">
@@ -37,40 +35,39 @@
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="3000.0">
             <SplitPane dividerPositions="0.23930481283422456" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="3000.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0">
+                    <ListView fx:id="ListViewer" maxHeight="1.7976931348623157E308" prefHeight="577.0" prefWidth="188.0" />
                     <ToolBar prefHeight="40.0" prefWidth="200.0">
                         <Button fx:id="NewList" mnemonicParsing="false" onAction="#NewListClicked" text="New List" />
                     </ToolBar>
-                    <ListView maxHeight="1.7976931348623157E308" prefWidth="100.0" />
                 </VBox>
                 <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0">
-                    <GridPane alignment="CENTER" maxHeight="100.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="453.0" VBox.vgrow="NEVER">
-                        <columnConstraints>
-                            <ColumnConstraints hgrow="NEVER" maxWidth="401.99998474121094" minWidth="10.0" prefWidth="373.60003662109375" />
-                            <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="216.40002441406247" minWidth="10.0" prefWidth="79.19996337890626" />
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        </rowConstraints>
-                        <Label fx:id="ListTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="379.0" text="Title" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets left="60.0" />
-                     </padding>
-                        </Label>
-                        <MenuButton mnemonicParsing="false" text="Edit..." GridPane.columnIndex="1">
-                            <items>
-                                <MenuItem fx:id="NewItem" mnemonicParsing="false" onAction="#NewItemClicked" text="New Item" />
-                                <CheckMenuItem fx:id="SortAlphabetical" mnemonicParsing="false" onAction="#SortAlphaClicked" text="Sort by Alphabetical" />
-                                <CheckMenuItem fx:id="SortDuedate" mnemonicParsing="false" onAction="#SortDuedateClicked" text="Sort by Due Date" />
-                            </items>
-                        </MenuButton>
-                    </GridPane>
-                    <ListView maxHeight="1.7976931348623157E308" prefWidth="297.0">
+               <HBox prefHeight="54.0" prefWidth="605.0">
+                  <children>
+                           <Label fx:id="ListTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="540.0" textAlignment="CENTER">
+                               <font>
+                                   <Font size="18.0" />
+                               </font>
+                        <padding>
+                           <Insets left="65.0" />
+                        </padding>
+                        <HBox.margin>
+                           <Insets top="5.0" />
+                        </HBox.margin>
+                           </Label>
+                           <MenuButton mnemonicParsing="false" text="Edit...">
+                               <items>
+                                   <MenuItem fx:id="NewItem" mnemonicParsing="false" onAction="#NewItemClicked" text="New Item" />
+                                   <CheckMenuItem fx:id="SortAlphabetical" mnemonicParsing="false" onAction="#SortAlphaClicked" text="Sort by Alphabetical" />
+                                   <CheckMenuItem fx:id="SortDueDate" mnemonicParsing="false" onAction="#SortDueDateClicked" text="Sort by Due Date" />
+                           <MenuItem fx:id="EditList" mnemonicParsing="false" onAction="#EditListClicked" text="Edit List" />
+                               </items>
+                        <HBox.margin>
+                           <Insets top="6.0" />
+                        </HBox.margin>
+                           </MenuButton>
+                  </children>
+               </HBox>
+                    <ListView fx:id="ItemViewer" maxHeight="1.7976931348623157E308" prefHeight="553.0" prefWidth="605.0">
                         <contextMenu>
                             <ContextMenu>
                                 <items>

@@ -4,9 +4,10 @@
 class java.ListManager{
 list : List<ToDoList> //masterlist
 --
-saveLists()
-deleteLists()
-loadList()
+AddList()
+SaveLists()
+DeleteLists()
+LoadList()
 }
 
 class java.ToDoList {
@@ -18,12 +19,13 @@ List(title)
 setTitle()
 getTitle()
 ..
-saveList()
-deleteList()
-sortListAlphabetical()
-sortListDuedate()
-displayComplete()
-displayIncomplete()
+AddItem()
+SaveList()
+DeleteList()
+SortListAlphabetical()
+SortListDuedate()
+DisplayComplete()
+DisplayIncomplete()
 }
 
 class java.Item {
@@ -33,12 +35,12 @@ class java.Item {
 --
 Event(String, LocalDate)
 ..Setters/Getters..
-setDesc()
-getDesc()
-setDuedate()
-getDuedate()
-setCompleted()
-getCompleted()
+SetDesc()
+GetDesc()
+SetDuedate()
+GetDuedate()
+SetCompleted()
+GetCompleted()
 }
 
 java.ToDoList "made up of" -- java.Item : >
