@@ -20,6 +20,7 @@ public class ListManager {
 
     public void AddList(String title){
         ToDoList list = new ToDoList(title);
+        MasterList.add(list);
     }
 
     public void SaveLists(List<ToDoList> selected){
@@ -38,6 +39,7 @@ public class ListManager {
             for (ToDoList todoList : MasterList) {
                 if (selectedList == todoList) {
                     todoList.ClearList();
+                    MasterList.remove(todoList);
                 }
             }
         }

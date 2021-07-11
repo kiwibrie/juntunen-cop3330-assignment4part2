@@ -5,13 +5,31 @@ package ucf.assignments;
  *  Copyright 2021 Brianne Juntunen
  */
 
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ListManagerTest {
+    ListManager masterlist = new ListManager();
 
-    //test AddList()
+    @Test
+    public void addlist(){
+        masterlist.AddList("title");
+        assertEquals("title", masterlist.MasterList.get(0).getTitle());
+    }
 
-    //test DeleteList() (should go through todolist)
+    @Test
+    public void deletelist(){
+        masterlist.AddList("title");
+        masterlist.AddList("second list");
+        List<ToDoList> selectedlists = new ListManager().MasterList;
+        selectedlists.add(masterlist.MasterList.get(0));
+        masterlist.DeleteLists(selectedlists);
+        assertEquals(1, masterlist.MasterList.size());
+    }
 
     //test SaveList() (should go through todolist)
 
