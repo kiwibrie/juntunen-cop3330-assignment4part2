@@ -22,6 +22,7 @@ import java.util.Observable;
 
 public class ListManagerApplicationController {
     private static final ListManager masterlistmasterlist = new ListManager();
+
     public static void setup(){
         masterlistmasterlist.AddList("New List");
     }
@@ -176,6 +177,20 @@ public class ListManagerApplicationController {
     @FXML
     public void EditItemClicked(ActionEvent actionEvent) {
         Item thisitem = masterlistmasterlist.getList(0).getItem(ItemViewer.getEditingIndex());
+        try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditItemScene.fxml")));
+            Scene scene = new Scene(root);
+            Stage edititemstage = new Stage();
+
+            edititemstage.setScene(scene);
+            edititemstage.setResizable(false);
+            edititemstage.setAlwaysOnTop(true);
+            edititemstage.setTitle("Edit Item");
+            edititemstage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -197,7 +212,7 @@ public class ListManagerApplicationController {
 
 
 
-    //CREATE NEW ITEM SCENE
+    //CREATE NEW ITEM SCENE CONTROLS
 
     @FXML public Button AddItem;
     @FXML public Button CancelButton;
@@ -220,6 +235,20 @@ public class ListManagerApplicationController {
     @FXML
     public void CancelClicked(ActionEvent actionEvent) {
         Stage stage = (Stage) CancelButton.getScene().getWindow();
+        stage.close();
+    }
+
+    //EDIT ITEM SCENE CONTROLS
+    @FXML public Button SaveChanges;
+
+    @FXML
+    public void SaveChangesClicked(ActionEvent actionEvent) {
+        Item thisitem = masterlistmasterlist.getList(0).getItem(ItemViewer.getEditingIndex());
+        thisitem.setDescription(DescriptionTextBox.getText());
+        thisitem.setDuedate(DueDateBox.toString());
+        thisitem.setCompleted(CompletedBox.isSelected());
+        updateItemViewer(masterlistmasterlist.getList(0));
+        Stage stage = (Stage) SaveChanges.getScene().getWindow();
         stage.close();
     }
 }
