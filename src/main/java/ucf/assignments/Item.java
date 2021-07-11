@@ -6,18 +6,37 @@ package ucf.assignments;
  */
 
 public class Item {
-    //desc
-    //duedate YYYY-MM-DD (int ex. 20210702)
-    //status (bool complete/incomplete)
-        //should auto set to incomplete?
+    private String description; //max 256
+    private String duedate; //YYYY-MM-DD
+    private boolean completed;
 
-    //desc setter
-    //desc getter
+    public Item(String desc, String duedate, boolean completed){
+        setDescription(desc);
+        setDuedate(duedate);
+        setCompleted(completed);
+    }
 
-    //duedate setter
-        //check validity (good month, good day)
-    //dudeate getter
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    //status setter
-    //status getter
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDuedate(String duedate) {
+        this.duedate = duedate;
+    }
+
+    public String getDuedate() {
+        return duedate;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public boolean getCompleted() {
+        return completed;
+    }
 }

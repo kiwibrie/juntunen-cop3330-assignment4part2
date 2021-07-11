@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController">
+    <VBox prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <MenuBar>
+            <Menu mnemonicParsing="false" text="File">
+                <MenuItem fx:id="CloseApp" mnemonicParsing="false" onAction="#CloseAppClicked" text="Close" />
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+                <MenuItem fx:id="SaveList" mnemonicParsing="false" onAction="#SaveListClicked" text="Save List..." />
+                <MenuItem fx:id="LoadList" mnemonicParsing="false" onAction="#LoadListClicked" text="Load List..." />
+                <MenuItem fx:id="DeleteList" mnemonicParsing="false" onAction="#DeleteListClicked" text="Delete List..." />
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <MenuItem fx:id="About" mnemonicParsing="false" onAction="#AboutClicked" text="About" />
+            </Menu>
+        </MenuBar>
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="3000.0">
+            <SplitPane dividerPositions="0.23930481283422456" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="3000.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0">
+                    <ListView fx:id="ListViewer" maxHeight="1.7976931348623157E308" prefHeight="577.0" prefWidth="188.0" />
+                    <ToolBar prefHeight="40.0" prefWidth="200.0">
+                        <Button fx:id="NewList" mnemonicParsing="false" onAction="#NewListClicked" text="New List" />
+                    </ToolBar>
+                </VBox>
+                <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0">
+               <HBox prefHeight="54.0" prefWidth="605.0">
+                  <children>
+                           <Label fx:id="ListTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="529.0" textAlignment="CENTER">
+                               <font>
+                                   <Font size="18.0" />
+                               </font>
+                        <padding>
+                           <Insets left="80.0" />
+                        </padding>
+                        <HBox.margin>
+                           <Insets top="5.0" />
+                        </HBox.margin>
+                           </Label>
+                           <MenuButton mnemonicParsing="false" text="Edit...">
+                               <items>
+                                   <MenuItem fx:id="NewItem" mnemonicParsing="false" onAction="#NewItemClicked" text="New Item" />
+                                   <CheckMenuItem fx:id="SortAlphabetical" mnemonicParsing="false" onAction="#SortAlphaClicked" text="Sort by Alphabetical" />
+                                   <CheckMenuItem fx:id="SortDueDate" mnemonicParsing="false" onAction="#SortDueDateClicked" text="Sort by Due Date" />
+                           <MenuItem fx:id="EditList" mnemonicParsing="false" onAction="#EditListClicked" text="Edit List" />
+                               </items>
+                        <HBox.margin>
+                           <Insets top="6.0" />
+                        </HBox.margin>
+                           </MenuButton>
+                  </children>
+               </HBox>
+                    <ListView fx:id="ItemViewer" maxHeight="1.7976931348623157E308" prefHeight="553.0" prefWidth="605.0">
+                        <contextMenu>
+                            <ContextMenu>
+                                <items>
+                                    <CheckMenuItem fx:id="CompletedToggle" mnemonicParsing="false" onAction="#ToggleCompletedClicked" text="Toggle Completed" />
+                                    <MenuItem fx:id="EditItem" mnemonicParsing="false" onAction="#EditItemClicked" text="Edit Item" />
+                                    <MenuItem fx:id="DeleteItem" mnemonicParsing="false" onAction="#DeleteItemClicked" text="Delete Item" />
+                                </items>
+                            </ContextMenu>
+                        </contextMenu>
+                    </ListView>
+                </VBox>
+            </SplitPane>
+        </AnchorPane>
+    </VBox>
+</AnchorPane>

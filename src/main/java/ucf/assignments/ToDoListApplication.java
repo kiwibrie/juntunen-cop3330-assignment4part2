@@ -10,11 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class ListManagerScene extends Application {
+public class ToDoListApplication extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -22,13 +23,14 @@ public class ListManagerScene extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        try{
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManagerScene.fxml")));
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManagerApplication.fxml")));
 
             Scene scene = new Scene(root);
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Calculator");
+            primaryStage.setResizable(false);
+            primaryStage.setTitle("To Do List");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

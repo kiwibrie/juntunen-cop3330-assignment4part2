@@ -1,40 +1,78 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class ListManager {
-ToDoList : Collection
-
+class java.ListManager{
+list : List<ToDoList> //masterlist
+--
 AddList()
-DeleteList()
-SaveList()
+SaveLists()
+DeleteLists()
 LoadList()
 }
 
-class ToDoList {
-name : String
-Item : Collection
-
+class java.ToDoList {
+list : List<Event>
+-title : String
+--
+List(title)
+..Setters/Getters..
+setTitle()
+getTitle()
+..
 AddItem()
-DeleteItem()
-SortList()
 SaveList()
 DeleteList()
+SortListAlphabetical()
+SortListDuedate()
+DisplayComplete()
+DisplayIncomplete()
 }
 
-class Item {
-desc : String
-duedate : int
-status : boolean
-
-SetDesc(desc)
+class java.Item {
+-desc : String
+-duedate : long //MMDDYYYY
+-completed : boolean
+--
+Event(String, LocalDate)
+..Setters/Getters..
+SetDesc()
 GetDesc()
-SetDueDate(int)
-GetDueDate()
-SetStatus(boolean)
-GetStatus()
+SetDuedate()
+GetDuedate()
+SetCompleted()
+GetCompleted()
 }
 
-ToDoList -- Item
-ListManager -- ToDoList
-App -- ListManager
+java.ToDoList "made up of" -- java.Item : >
+java.ListManager "made up of" -- java.ToDoList : > calls methods from
+
+java.ToDoListApp -- java.Controller : > calls
+resources.FXMLfile .. java.Controller : < controls
+java.Controller -- java.ListManager : > calls
+
+
+class java.Controller{
+--List Management--
+New List
+?Edit List
+Load List
+Save Lists
+Delete Lists
+--View--
+Sort by Alphabetical
+Sort by Duedate
+Display Complete
+Display Incomplete
+Display All
+--
+New Event
+Edit Event
+Mark Complete/Incomplete
+}
+
+class java.ToDoListApp{
+main()
+start()
+}
+
 @enduml
