@@ -34,6 +34,8 @@ public class ListManagerApplicationController {
     @FXML public MenuItem EditList;
     @FXML public ListView ItemViewer;
     @FXML public ListView ListViewer;
+    @FXML public CheckMenuItem ShowComplete;
+    @FXML public CheckMenuItem ShowIncomplete;
 
     //FILE
     @FXML
@@ -107,6 +109,32 @@ public class ListManagerApplicationController {
             //update ItemViewer
         } else {
             //for the current list, display unsorted list
+            //update ItemViewer
+        }
+    }
+
+    @FXML
+    public void ShowCompleteClicked(ActionEvent actionEvent) {
+        ShowIncomplete.setSelected(false);
+
+        if(ShowComplete.isSelected()){
+            //for the current list, display complete items
+            //update ItemViewer
+        } else {
+            //for the current list, display entire list
+            //update ItemViewer
+        }
+    }
+
+    @FXML
+    public void ShowIncompleteClicked(ActionEvent actionEvent) {
+        ShowComplete.setSelected(false);
+
+        if(ShowIncomplete.isSelected()){
+            //for the current list, display incomplete items
+            //update ItemViewer
+        } else {
+            //for the current list, display entire list
             //update ItemViewer
         }
     }

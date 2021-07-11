@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ListManagerApplicationController">
     <VBox prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <MenuBar>
             <Menu mnemonicParsing="false" text="File">
@@ -59,6 +59,8 @@
                                    <MenuItem fx:id="NewItem" mnemonicParsing="false" onAction="#NewItemClicked" text="New Item" />
                                    <CheckMenuItem fx:id="SortAlphabetical" mnemonicParsing="false" onAction="#SortAlphaClicked" text="Sort by Alphabetical" />
                                    <CheckMenuItem fx:id="SortDueDate" mnemonicParsing="false" onAction="#SortDueDateClicked" text="Sort by Due Date" />
+                           <CheckMenuItem fx:id="ShowComplete" mnemonicParsing="false" onAction="#ShowCompleteClicked" text="Show Complete" />
+                           <CheckMenuItem fx:id="ShowIncomplete" mnemonicParsing="false" onAction="#ShowIncompleteClicked" text="Show Incomplete" />
                            <MenuItem fx:id="EditList" mnemonicParsing="false" onAction="#EditListClicked" text="Edit List" />
                                </items>
                         <HBox.margin>

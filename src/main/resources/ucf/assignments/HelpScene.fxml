@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.HelpSceneController">
    <children>
       <VBox layoutX="143.0" layoutY="200.0" prefHeight="600.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -32,33 +31,119 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Label text="for making my assignment just a little more tedious" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" />
+                     </GridPane.margin>
+                  </Label>
                </children>
             </GridPane>
             <ScrollPane prefHeight="519.0" prefWidth="400.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="378.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="930.0" prefWidth="378.0">
                      <children>
-                        <GridPane layoutX="66.0" layoutY="110.0" prefHeight="603.2" prefWidth="387.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.4000244140625" minWidth="10.0" prefWidth="91.60003662109375" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.0" minWidth="10.0" prefWidth="296.39996337890625" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label text="Add List">
-                                 <GridPane.margin>
+                         <GridPane layoutX="66.0" layoutY="110.0" prefHeight="603.2" prefWidth="387.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                             <columnConstraints>
+                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.4000244140625" minWidth="10.0" prefWidth="108.80003662109375" />
+                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.0" minWidth="10.0" prefWidth="270.39996337890625" />
+                             </columnConstraints>
+                             <rowConstraints>
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="90.0" prefHeight="90.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                                 <RowConstraints maxHeight="100.0" minHeight="70.0" prefHeight="70.0" vgrow="NEVER" />
+                             </rowConstraints>
+                             <Label text="Add List">
+                                <GridPane.margin>
                                     <Insets left="10.0" />
-                                 </GridPane.margin>
-                              </Label>
-                           </children>
-                        </GridPane>
+                                </GridPane.margin>
+                             </Label>
+                           <Label prefHeight="79.0" prefWidth="292.0" text="Click the &quot;Add List&quot; button at the bottom left of the screen. " wrapText="true" GridPane.columnIndex="1" />
+                           <Label text="New Item" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="In the To Do List Viewer, click &quot;Edit...&quot; in the top right corner and select &quot;New Item&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           <Label text="Remove Item" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="Right click the selected item and select &quot;Delete Item&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           <Label text="Clear All" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="Edit Desc" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="Edit Due Date" wrapText="true" GridPane.rowIndex="5">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="Remove every item. Sorry!" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <Label text="Right click the selected item and select &quot;Edit Item&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           <Label text="Right click the selected item and select &quot;Edit Item&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           <Label text="Mark Complete" wrapText="true" GridPane.rowIndex="6">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="If incomplete, right click the selected item and select &quot;Toggle Completed&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           <Label text="Mark Incomplete" wrapText="true" GridPane.rowIndex="7">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="If complete, right click the selected item and select &quot;Toggle Completed&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                           <Label text="Display All Items" wrapText="true" GridPane.rowIndex="8">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="In the To Do List Viewer, click &quot;Edit...&quot; in the top right corner and deselect any views you have selected." wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                           <Label text="Display Incomplete" wrapText="true" GridPane.rowIndex="9">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="In the To Do List Viewer, click &quot;Edit...&quot; in the top right corner and select &quot;Show Incomplete&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                           <Label text="Display Complete" wrapText="true" GridPane.rowIndex="10">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="In the To Do List Viewer, click &quot;Edit...&quot; in the top right corner and select &quot;Show Complete&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                           <Label text="Save List" GridPane.rowIndex="11">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="Select &quot;Edit&quot; at the far top left corner of the screen. Then, select &quot;Save List...&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                           <Label text="Load List" GridPane.rowIndex="12">
+                              <GridPane.margin>
+                                 <Insets left="10.0" />
+                              </GridPane.margin>
+                           </Label>
+                           <Label text="Select &quot;Edit&quot; at the far top left corner of the screen. Then, select &quot;Load List...&quot;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                         </GridPane>
                      </children>
                   </AnchorPane>
               </content>
