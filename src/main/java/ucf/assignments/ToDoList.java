@@ -11,6 +11,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,6 +24,7 @@ public class ToDoList {
 
     public ToDoList(String title) {
         setTitle(title);
+        this.list = new ArrayList<>();
     }
 
     public void setTitle(String title) {
@@ -48,8 +50,8 @@ public class ToDoList {
     public void SaveList(String path){
         //using Gson
         try {
-            //todo make a path and create ToDoList_Title.json
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get("ToDoList_"+getTitle()+".json"));
+            File file = new File(path+"/ToDoList_savedlist"+hashCode()+".json");
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get(String.valueOf(file)));
 
             Map<String, Object> savedlist = new HashMap<>();
             savedlist.put("title", getTitle());
@@ -65,7 +67,6 @@ public class ToDoList {
 
             Gson gson = new Gson();
 
-            // write JSON to file
             writer.write(gson.toJson(savedlist));
 
             writer.close();
@@ -99,6 +100,7 @@ public class ToDoList {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void ClearList(){
