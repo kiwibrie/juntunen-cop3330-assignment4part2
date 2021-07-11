@@ -85,7 +85,7 @@ public class ToDoList {
         return sortedlist;
     }
 
-    public List<Item> DisplayComplete(){
+    public List<Item> GetComplete(){
         List<Item> completeEvents = new ArrayList<>();
         for (Item item : list) {
             if (item.getCompleted()) {
@@ -95,7 +95,7 @@ public class ToDoList {
         return completeEvents;
     }
 
-    public List<Item> DisplayIncomplete(){
+    public List<Item> GetIncomplete(){
         List<Item> incompleteEvents = new ArrayList<>();
         for (Item item : list) {
             if (!item.getCompleted()) {

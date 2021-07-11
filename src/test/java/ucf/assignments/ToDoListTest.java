@@ -62,19 +62,19 @@ class ToDoListTest {
     }
 
     @Test
-    public void displaycomplete(){
+    public void getcomplete(){
         list.AddItem(new Item("alpha", "20210711", false));
         list.AddItem(new Item("beta", "20210710", false));
         list.AddItem(new Item("omega", "19700101", true));
-        assertEquals(1, list.DisplayComplete().size());
+        assertEquals(1, list.GetComplete().size());
     }
 
     @Test
-    public void displayincomplete(){
+    public void getincomplete(){
         list.AddItem(new Item("alpha", "20210711", false));
         list.AddItem(new Item("beta", "20210710", false));
         list.AddItem(new Item("omega", "19700101", true));
-        assertEquals(2, list.DisplayIncomplete().size());
+        assertEquals(2, list.GetIncomplete().size());
     }
 
     //save list to file
