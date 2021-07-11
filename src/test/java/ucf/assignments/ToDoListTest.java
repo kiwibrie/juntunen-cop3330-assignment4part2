@@ -77,7 +77,7 @@ class ToDoListTest {
         assertEquals(2, list.GetIncomplete().size());
     }
 
-    //save list to file
+    //todo save list to file
 
     @Test
     public void clearlist(){
