@@ -8,7 +8,14 @@ package ucf.assignments;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class ListManagerApplicationController {
     @FXML public MenuItem EditItem;
@@ -50,6 +57,18 @@ public class ListManagerApplicationController {
     //HELP
     @FXML
     public void AboutClicked(ActionEvent actionEvent) {
+        try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HelpScene.fxml")));
+            Scene scene = new Scene(root);
+            Stage helpstage = new Stage();
+
+            helpstage.setScene(scene);
+            helpstage.setResizable(false);
+            helpstage.setTitle("Help");
+            helpstage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //LIST SIDE
