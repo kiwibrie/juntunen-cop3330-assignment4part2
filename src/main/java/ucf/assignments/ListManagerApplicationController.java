@@ -46,6 +46,7 @@ public class ListManagerApplicationController {
     //EDIT
     @FXML
     public void SaveListClicked(ActionEvent actionEvent) {
+
     }
 
     @FXML
@@ -89,6 +90,7 @@ public class ListManagerApplicationController {
 
             createitemstage.setScene(scene);
             createitemstage.setResizable(false);
+            createitemstage.setAlwaysOnTop(true);
             createitemstage.setTitle("New Item");
             createitemstage.show();
         } catch (IOException e) {
@@ -168,4 +170,30 @@ public class ListManagerApplicationController {
     public void DeleteItemClicked(ActionEvent actionEvent) {
     }
 
+
+    //CREATE NEW ITEM SCENE
+
+    @FXML public Button AddItem;
+    @FXML public Button CancelButton;
+    @FXML public CheckBox CompletedBox;
+    @FXML public DatePicker DueDateBox;
+    @FXML public TextField DescriptionTextBox;
+
+    @FXML
+    public void AddItemClicked(ActionEvent actionEvent) {
+        String desc = DescriptionTextBox.getText();
+        String date = DueDateBox.toString();
+        boolean completed = CompletedBox.isSelected();
+        Item newitem = new Item(desc, date, completed);
+        //todo add new item to list and update viewer
+
+        Stage stage = (Stage) AddItem.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void CancelClicked(ActionEvent actionEvent) {
+        Stage stage = (Stage) CancelButton.getScene().getWindow();
+        stage.close();
+    }
 }
