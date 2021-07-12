@@ -15,8 +15,16 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ListManagerApplicationController2 {
+    ToDoList masterlist;
 
-    ToDoList masterlist = new ToDoList("My List");
+    @FXML public Button NewList;
+    @FXML
+    public void NewListClicked(ActionEvent actionEvent) {
+        NewList.setDisable(true);
+        masterlist = new ToDoList("My List");
+        UpdateListViewer();
+        UpdateItemViewer(masterlist);
+    }
 
     //---------------------------------------------------------- TOP TOOLBAR
     //FILE
@@ -223,7 +231,32 @@ public class ListManagerApplicationController2 {
 
     @FXML
     public void EditListClicked(ActionEvent actionEvent) {
-        //todo create a window for editting a list
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditListScene.fxml")));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Edit List");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //EDIT LIST CLICKED MENU
+    @FXML public TextField TitleTextBox;
+    @FXML public Button ListSaveChanges;
+
+    @FXML
+    public void ListSaveChangesClicked(){
+        String title = TitleTextBox.getText();
+        masterlist.setTitle(title);
+        UpdateItemViewer(masterlist);
+        UpdateListViewer();
+        Stage toClose = (Stage) ListSaveChanges.getScene().getWindow();
+        toClose.close();
     }
 
     //NEW ITEM CLICKED MENU
@@ -233,7 +266,7 @@ public class ListManagerApplicationController2 {
     @FXML public Button AddItem;
 
     @FXML
-    public void AddItemClicked(ActionEvent actionEvent) {
+    public void AddItemClicked() {
         String desc = DescriptionTextBox.getText();
         String duedate = DueDateBox.toString();
         boolean status = CompletedBox.isSelected();
@@ -243,20 +276,18 @@ public class ListManagerApplicationController2 {
         toClose.close();
     }
 
-    //EDIT LIST CLICKED MENU
-
     //ITEM "SETTINGS"
     @FXML public CheckMenuItem CompletedToggle;
     @FXML public MenuItem EditItem;
     @FXML public MenuItem DeleteItem;
 
     @FXML
-    public void ToggleCompletedClicked(ActionEvent actionEvent) {
+    public void ToggleCompletedClicked() {
         masterlist.getItem(ItemViewer.getEditingIndex()).setCompleted(CompletedToggle.isSelected());
     }
 
     @FXML
-    public void EditItemClicked(ActionEvent actionEvent) {
+    public void EditItemClicked() {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditItemScene.fxml")));
             Scene scene = new Scene(root);
@@ -275,14 +306,14 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void DeleteItemClicked(ActionEvent actionEvent) {
+    public void DeleteItemClicked() {
         masterlist.DeleteItem(masterlist.getItem(ItemViewer.getEditingIndex()));
         UpdateItemViewer(masterlist);
     }
 
     //EDIT ITEM CLICKED MENU
     @FXML
-    public void SaveChangesClicked(ActionEvent actionEvent) {
+    public void SaveChangesClicked() {
         String desc = DescriptionTextBox.getText();
         String duedate = DueDateBox.toString();
         boolean status = CompletedBox.isSelected();
@@ -293,4 +324,5 @@ public class ListManagerApplicationController2 {
         Stage toClose = (Stage) AddItem.getScene().getWindow();
         toClose.close();
     }
+
 }

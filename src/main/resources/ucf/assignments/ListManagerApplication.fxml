@@ -37,7 +37,7 @@
                 <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0">
                     <ListView fx:id="ListViewer" maxHeight="1.7976931348623157E308" prefHeight="577.0" prefWidth="188.0" />
                     <ToolBar prefHeight="40.0" prefWidth="200.0">
-                        <!--<Button fx:id="NewList" mnemonicParsing="false" onAction="#NewListClicked" text="New List" /> -->
+                        <Button fx:id="NewList" mnemonicParsing="false" onAction="#NewListClicked" text="New List" />
                     </ToolBar>
                 </VBox>
                 <VBox maxHeight="1.7976931348623157E308" prefWidth="100.0">
