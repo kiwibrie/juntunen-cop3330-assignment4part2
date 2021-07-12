@@ -3,7 +3,6 @@ package ucf.assignments;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,11 +14,11 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ListManagerApplicationController2 {
-    ToDoList masterlist;
+    public ToDoList masterlist;
 
     @FXML public Button NewList;
     @FXML
-    public void NewListClicked(ActionEvent actionEvent) {
+    public void NewListClicked() {
         NewList.setDisable(true);
         masterlist = new ToDoList("My List");
         UpdateListViewer();
@@ -60,7 +59,7 @@ public class ListManagerApplicationController2 {
     @FXML public MenuItem DeleteList;
 
     @FXML
-    public void SaveListClicked(ActionEvent actionEvent) {
+    public void SaveListClicked() {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SaveScene.fxml")));
             Scene scene = new Scene(root);
@@ -76,7 +75,7 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void LoadListClicked(ActionEvent actionEvent) {
+    public void LoadListClicked() {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoadScene.fxml")));
             Scene scene = new Scene(root);
@@ -92,7 +91,7 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void DeleteListClicked(ActionEvent actionEvent) {
+    public void DeleteListClicked() {
         masterlist.ClearList();
         UpdateItemViewer(masterlist);
     }
@@ -103,7 +102,7 @@ public class ListManagerApplicationController2 {
     @FXML public TextField DirectoryTextBox;
 
     @FXML
-    public void SaveOKClicked(ActionEvent actionEvent) {
+    public void SaveOKClicked() {
         String path = DirectoryTextBox.getText();
         masterlist.SaveList(path);
         Stage toClose = (Stage) SaveOK.getScene().getWindow();
@@ -111,7 +110,7 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void CancelClicked(ActionEvent actionEvent) {
+    public void CancelClicked() {
         Stage toClose = (Stage) CancelButton.getScene().getWindow();
         toClose.close();
     }
@@ -119,7 +118,7 @@ public class ListManagerApplicationController2 {
     //---------------------------------------------------------- LOAD SCENE
     @FXML public Button LoadOK;
 
-    @FXML public void LoadOKClicked(ActionEvent actionEvent) {
+    @FXML public void LoadOKClicked() {
         String path = DirectoryTextBox.getText();
         masterlist.LoadList(path);
         UpdateListViewer();
@@ -149,8 +148,11 @@ public class ListManagerApplicationController2 {
         for(int i = 0; i < todolist.list.size(); i++){
             itemviewinglist.add(todolist.getItem(i));
         }
+        if(ItemViewer == null){
+            ItemViewer = new ListView<>();
+        }
         ItemViewer.setItems(itemviewinglist);
-        ListTitle.textProperty().set(masterlist.getTitle());
+        //ListTitle.textProperty().set(masterlist.getTitle());
     }
 
     //edit menu
@@ -162,7 +164,7 @@ public class ListManagerApplicationController2 {
     @FXML public MenuItem EditList;
 
     @FXML
-    public void NewItemClicked(ActionEvent actionEvent) {
+    public void NewItemClicked() {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateItemScene.fxml")));
             Scene scene = new Scene(root);
@@ -178,7 +180,7 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void SortAlphaClicked(ActionEvent actionEvent) {
+    public void SortAlphaClicked() {
         SortDueDate.setSelected(false);
         ShowComplete.setSelected(false);
         ShowIncomplete.setSelected(false);
@@ -191,7 +193,7 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void SortDueDateClicked(ActionEvent actionEvent) {
+    public void SortDueDateClicked() {
         SortAlphabetical.setSelected(false);
         ShowComplete.setSelected(false);
         ShowIncomplete.setSelected(false);
@@ -204,7 +206,7 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void ShowCompleteClicked(ActionEvent actionEvent) {
+    public void ShowCompleteClicked() {
         ShowIncomplete.setSelected(false);
         SortAlphabetical.setSelected(false);
         SortDueDate.setSelected(false);
@@ -217,7 +219,7 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void ShowIncompleteClicked(ActionEvent actionEvent) {
+    public void ShowIncompleteClicked() {
         ShowComplete.setSelected(false);
         SortAlphabetical.setSelected(false);
         SortDueDate.setSelected(false);
@@ -230,7 +232,7 @@ public class ListManagerApplicationController2 {
     }
 
     @FXML
-    public void EditListClicked(ActionEvent actionEvent) {
+    public void EditListClicked() {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditListScene.fxml")));
             Scene scene = new Scene(root);
@@ -270,6 +272,11 @@ public class ListManagerApplicationController2 {
         String desc = DescriptionTextBox.getText();
         String duedate = DueDateBox.toString();
         boolean status = CompletedBox.isSelected();
+        if(masterlist == null){
+            masterlist = new ToDoList("My List");
+            UpdateListViewer();
+            UpdateItemViewer(masterlist);
+        }
         masterlist.AddItem(new Item(desc, duedate, status));
         UpdateItemViewer(masterlist);
         Stage toClose = (Stage) AddItem.getScene().getWindow();
