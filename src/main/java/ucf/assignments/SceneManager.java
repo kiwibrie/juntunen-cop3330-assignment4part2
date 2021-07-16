@@ -16,7 +16,8 @@ public class SceneManager {
         directory = new HashMap<>();
         directory.put("To Do List", "ListManagerApplication.fxml");
         directory.put("Help", "Help.fxml");
-        directory.put("Error", "ErrorMessage.fxml");
+        directory.put("Date Error", "ErrorDueDate.fxml");
+        directory.put("Description Error", "ErrorDesc.fxml");
     }
 
     public void makeScene(Stage stage, String key) throws IOException {

@@ -7,12 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 
 public class ToDoListController {
 
@@ -122,13 +124,19 @@ public class ToDoListController {
     @FXML public Button AddItemButton;
 
     @FXML public void AddItemButtonClicked(ActionEvent actionEvent){
-        if(validItem(ItemDescField.getText(), DueDateSelector.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE))){
-            String desc = ItemDescField.getText();
-            String date = DueDateSelector.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE);
-            boolean status = CompletedButton.isSelected();
-            masterlist.addItem(new Item(desc, date, status));
-            updateList(masterlist.list);
-            clearAddItemFields();
+        if(validDesc(ItemDescField.getText())){
+            if(DueDateSelector.getValue() != null){
+                if(validDueDate(DueDateSelector.getValue().toString())){
+                    String desc = ItemDescField.getText();
+                    String date = DueDateSelector.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE);
+                    boolean status = CompletedButton.isSelected();
+                    masterlist.addItem(new Item(desc, date, status));
+                    updateList(masterlist.list);
+                    clearAddItemFields();
+                    return;
+                }
+            }
+            validDueDate("bad date");
         }
     }
 
@@ -138,9 +146,6 @@ public class ToDoListController {
         CompletedColumn.setCellValueFactory(new PropertyValueFactory<>("completed"));
         ItemDescColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         DueDateColumn.setCellValueFactory(new PropertyValueFactory<>("duedate"));
-
-
-
     }
 
     public void clearAddItemFields(){
@@ -149,19 +154,43 @@ public class ToDoListController {
         CompletedButton.setSelected(false);
     }
 
-    public boolean validItem(String desc, String date){
+    public boolean validDesc(String desc){
         Item item = new Item("falseItem", "1970-01-01", false);
-        if(!item.verifyDescription(desc)){
-            //todo throw bad desc error
+        if(desc == null || !item.verifyDescription(desc)){
+            try{
+                Stage stage = new Stage();
+                sceneManager.makeScene(stage, "Description Error");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return false;
         }
-
-        if(!item.verifyDueDate(date)){
-            //todo throw bad duedate error
-            return false;
-        }
-
         return true;
     }
 
+    public boolean validDueDate(String date){
+        Item item = new Item("falseItem", "1970-01-01", false);
+        if(date == null || !item.verifyDueDate(date)){
+            try{
+                Stage stage = new Stage();
+                sceneManager.makeScene(stage, "Date Error");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+        return true;
+    }
+
+    //---------------------------------------------------------ERROR WINDOW
+    @FXML public Button ErrorOK;
+
+    @FXML public void ErrorOKClicked(ActionEvent actionEvent) {
+        Stage stage = (Stage) ErrorOK.getScene().getWindow();
+        stage.close();
+    }
 }
