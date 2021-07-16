@@ -16,8 +16,8 @@ public class ToDoListController {
     SceneManager sceneManager;
     ToDoList masterlist;
 
-    public ToDoListController(SceneManager scmanager){
-        this.sceneManager = scmanager;
+    public ToDoListController(){
+        this.sceneManager = new SceneManager();
         masterlist = new ToDoList("My List");
     }
 

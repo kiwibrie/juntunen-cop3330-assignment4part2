@@ -11,14 +11,12 @@ import java.util.Objects;
 
 public class SceneManager {
     Map<String, String> directory;
-    ToDoListController controller;
 
     public SceneManager(){
         directory = new HashMap<>();
         directory.put("To Do List", "ListManagerApplication.fxml");
         directory.put("Help", "Help.fxml");
         directory.put("Error", "ErrorMessage.fxml");
-        this.controller = new ToDoListController(this);
     }
 
     public void makeScene(Stage stage, String key) throws IOException {
