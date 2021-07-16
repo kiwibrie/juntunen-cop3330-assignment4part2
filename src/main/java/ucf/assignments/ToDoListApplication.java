@@ -24,14 +24,18 @@ public class ToDoListApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            /*
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManagerApplication.fxml")));
-
             Scene scene = new Scene(root);
-
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.setTitle("To Do List");
-            primaryStage.show();
+            primaryStage.show(); */
+
+            SceneManager scmanager = new SceneManager();
+            Stage stage = scmanager.makeScene("ToDoList");
+            stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

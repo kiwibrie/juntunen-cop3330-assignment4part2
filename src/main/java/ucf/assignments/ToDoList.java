@@ -39,15 +39,15 @@ public class ToDoList {
         return list.get(x);
     }
 
-    public void AddItem(Item item){
+    public void addItem(Item item){
         list.add(item);
     }
 
-    public void DeleteItem(Item item){
+    public void deleteItem(Item item){
         list.remove(item);
     }
 
-    public void SaveList(String path){
+    public void saveList(String path){
         //using Gson
         try {
             File file = new File(path+"/ToDoList_savedlist"+hashCode()+".json");
@@ -75,7 +75,7 @@ public class ToDoList {
         }
     }
 
-    public ToDoList LoadList(String path) {
+    public ToDoList loadList(String path) {
         //using Gson
         try {
             Reader reader = Files.newBufferedReader(Paths.get(path));
@@ -91,7 +91,7 @@ public class ToDoList {
                         obj.get("desc").getAsString(),
                         obj.get("duedate").getAsString(),
                         obj.get("completed").getAsBoolean());
-                loadedlist.AddItem(createditem);
+                loadedlist.addItem(createditem);
             }
             //MasterList.add(loadedlist);
 
@@ -103,23 +103,23 @@ public class ToDoList {
         return null;
     }
 
-    public void ClearList(){
+    public void clearList(){
         list.clear();
     }
 
-    public List<Item> SortListAlphabetical(){
+    public List<Item> sortListAlphabetical(){
         List<Item> sortedlist = list;
         sortedlist.sort(Comparator.comparing(Item::getDescription));
         return sortedlist;
     }
 
-    public List<Item> SortListDuedate(){
+    public List<Item> sortListDuedate(){
         List<Item> sortedlist = list;
         sortedlist.sort(Comparator.comparing(Item::getDuedate));
         return sortedlist;
     }
 
-    public List<Item> GetComplete(){
+    public List<Item> getComplete(){
         List<Item> completeEvents = new ArrayList<>();
         for (Item item : list) {
             if (item.getCompleted()) {
@@ -129,7 +129,7 @@ public class ToDoList {
         return completeEvents;
     }
 
-    public List<Item> GetIncomplete(){
+    public List<Item> getIncomplete(){
         List<Item> incompleteEvents = new ArrayList<>();
         for (Item item : list) {
             if (!item.getCompleted()) {

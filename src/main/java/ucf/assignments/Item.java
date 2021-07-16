@@ -17,10 +17,10 @@ public class Item {
     }
 
     public void setDescription(String description) {
-        if(description.length() <= 256){
-            this.description = description;
+        if(verifyDescription(description)){
+          this.description = description;
         } else {
-            this.description = description.substring(0,256);
+            this.description = "New Item";
         }
     }
 
@@ -28,12 +28,23 @@ public class Item {
         return description;
     }
 
+    public boolean verifyDescription(String description){
+        return description.length() > 0 && description.length() < 257;
+    }
+
     public void setDuedate(String duedate) {
+        if(!verifyDueDate(duedate)){
+            duedate = String.format(duedate, "%tF");
+        }
         this.duedate = duedate;
     }
 
     public String getDuedate() {
         return duedate;
+    }
+
+    public boolean verifyDueDate(String duedate){
+        return (duedate.length() == 10) && duedate.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d");
     }
 
     public void setCompleted(boolean completed) {
