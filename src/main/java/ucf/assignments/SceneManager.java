@@ -1,7 +1,6 @@
 package ucf.assignments;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -22,13 +21,14 @@ public class SceneManager {
         this.controller = new ToDoListController(this);
     }
 
-    public Stage makeScene(String key) throws IOException {
+    public void makeScene(Stage stage, String key) throws IOException {
         Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource(key))));
-        Stage stage = new Stage();
-        stage.setTitle(key);
+        if(stage == null){
+            stage = new Stage();
+        }
         stage.setScene(scene);
+        stage.setTitle(key);
         stage.setResizable(false);
-        return stage;
     }
 
 

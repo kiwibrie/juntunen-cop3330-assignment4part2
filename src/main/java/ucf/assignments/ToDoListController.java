@@ -46,7 +46,8 @@ public class ToDoListController {
 
     @FXML public void HelpClicked(ActionEvent actionEvent){
         try{
-            Stage stage = sceneManager.makeScene("Help");
+            Stage stage = null;
+            sceneManager.makeScene(stage, "Help");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -91,8 +92,6 @@ public class ToDoListController {
         CompletedColumn.setCellValueFactory(new PropertyValueFactory<>("completed"));
         ItemDescColumn.setCellValueFactory(new PropertyValueFactory<>("desc"));
         DueDateColumn.setCellValueFactory(new PropertyValueFactory<>("duedate"));
-
-
     }
 
 }

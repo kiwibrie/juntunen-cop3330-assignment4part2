@@ -24,6 +24,7 @@ public class ToDoListApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            SceneManager scmanager = new SceneManager();
             /*
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManagerApplication.fxml")));
             Scene scene = new Scene(root);
@@ -32,9 +33,9 @@ public class ToDoListApplication extends Application {
             primaryStage.setTitle("To Do List");
             primaryStage.show(); */
 
-            SceneManager scmanager = new SceneManager();
-            Stage stage = scmanager.makeScene("ToDoList");
-            stage.show();
+
+            scmanager.makeScene(primaryStage, "To Do List");
+            primaryStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
