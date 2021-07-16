@@ -20,10 +20,7 @@ public class SceneManager {
     }
 
     public void makeScene(Stage stage, String key) throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource(key))));
-        if(stage == null){
-            stage = new Stage();
-        }
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource(directory.get(key)))));
         stage.setScene(scene);
         stage.setTitle(key);
         stage.setResizable(false);

@@ -3,12 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -21,13 +23,21 @@
     <VBox prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <MenuBar>
             <Menu mnemonicParsing="false" text="File">
+                <MenuItem fx:id="SaveList" mnemonicParsing="false" onAction="#SaveListClicked" text="Save List..." />
+                <MenuItem fx:id="LoadList" mnemonicParsing="false" onAction="#LoadListClicked" text="Load List..." />
+            <SeparatorMenuItem mnemonicParsing="false" />
                 <MenuItem fx:id="CloseApp" mnemonicParsing="false" onAction="#CloseAppClicked" text="Close" />
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
-                <MenuItem fx:id="SaveList" mnemonicParsing="false" onAction="#SaveListClicked" text="Save List..." />
-                <MenuItem fx:id="LoadList" mnemonicParsing="false" onAction="#LoadListClicked" text="Load List..." />
-                <MenuItem fx:id="DeleteList" mnemonicParsing="false" onAction="#DeleteListClicked" text="Delete List..." />
+                <MenuItem fx:id="ClearList" mnemonicParsing="false" onAction="#ClearListClicked" text="Clear List" />
             </Menu>
+         <Menu mnemonicParsing="false" text="View">
+           <items>
+               <CheckMenuItem fx:id="AllItemsMenuItem" mnemonicParsing="false" onAction="#ShowAllItemsClicked" selected="true" text="Show All Items" />
+               <CheckMenuItem fx:id="OnlyCompletedMenuItem" mnemonicParsing="false" onAction="#OnlyCompleteClicked" text="Show Only Complete" />
+               <CheckMenuItem fx:id="OnlyIncompletedMenuItem" mnemonicParsing="false" onAction="#OnlyIncompletedClicked" text="Show Only Incomplete" />
+           </items>
+         </Menu>
             <Menu mnemonicParsing="false" text="Help">
                 <MenuItem fx:id="Help" mnemonicParsing="false" onAction="#HelpClicked" text="About" />
             </Menu>
@@ -37,23 +47,23 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <TableView fx:id="ToDoListViewer" prefHeight="574.4" prefWidth="556.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <columns>
-                            <TableColumn fx:id="CompletedColumn" prefWidth="35.19998246431351" />
-                            <TableColumn fx:id="ItemDescColumn" minWidth="200.0" prefWidth="390.4000358581543" text="Item Description">
+                            <TableColumn fx:id="CompletedColumn" maxWidth="100.0" prefWidth="50.0" resizable="false" />
+                            <TableColumn fx:id="ItemDescColumn" minWidth="200.0" prefWidth="375.0" text="Item Description">
                                 <contextMenu>
                                     <ContextMenu>
                                         <items>
-                                            <MenuItem fx:id="EditItemContextMenuDesc" mnemonicParsing="false" onAction="#EditItemButtonClicked" text="Edit Item" />
-                                            <MenuItem fx:id="DeleteItemContextMenuDesc" mnemonicParsing="false" onAction="#DeleteItemButtonClicked" text="Delete Item" />
+                                            <MenuItem fx:id="EditItemContextMenuDesc" mnemonicParsing="false" onAction="#EditItemButtonClicked" text="Edit Selected Item" />
+                                            <MenuItem fx:id="DeleteItemContextMenuDesc" mnemonicParsing="false" onAction="#DeleteItemButtonClicked" text="Delete Selected Item" />
                                         </items>
                                     </ContextMenu>
                                 </contextMenu>
                             </TableColumn>
-                            <TableColumn fx:id="DueDateColumn" prefWidth="128.79998779296875" text="Due Date">
+                            <TableColumn fx:id="DueDateColumn" prefWidth="135.0" resizable="false" text="Due Date">
                                 <contextMenu>
                                     <ContextMenu>
                                         <items>
-                                            <MenuItem fx:id="EditItemContextMenuDate" mnemonicParsing="false" onAction="#EditItemButtonClicked" text="Edit Item" />
-                                            <MenuItem fx:id="DeleteItemContextMenuDate" mnemonicParsing="false" onAction="#DeleteItemButtonClicked" text="Delete Item" />
+                                            <MenuItem fx:id="EditItemContextMenuDate" mnemonicParsing="false" onAction="#EditItemButtonClicked" text="Edit Selected Item" />
+                                            <MenuItem fx:id="DeleteItemContextMenuDate" mnemonicParsing="false" onAction="#DeleteItemButtonClicked" text="Delete Selected Item" />
                                         </items>
                                     </ContextMenu>
                                 </contextMenu>

@@ -10,9 +10,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class ToDoListController {
+
     SceneManager sceneManager;
     ToDoList masterlist;
 
@@ -25,7 +28,10 @@ public class ToDoListController {
     @FXML public MenuItem CloseApp;
     @FXML public MenuItem SaveList;
     @FXML public MenuItem LoadList;
-    @FXML public MenuItem DeleteList;
+    @FXML public MenuItem ClearList;
+    @FXML public CheckMenuItem AllItemsMenuItem;
+    @FXML public CheckMenuItem OnlyCompletedMenuItem;
+    @FXML public CheckMenuItem OnlyIncompletedMenuItem;
     @FXML public MenuItem Help;
 
     @FXML public void CloseAppClicked(ActionEvent actionEvent){
@@ -40,13 +46,44 @@ public class ToDoListController {
         //todo LoadlistClicked
     }
 
-    @FXML public void DeleteListClicked(ActionEvent actionEvent){
-        //todo DeleteListClicked
+    @FXML public void ClearListClicked(ActionEvent actionEvent){
+        masterlist.clearList();
+        updateList(masterlist.list);
+    }
+
+    @FXML public void ShowAllItemsClicked(ActionEvent actionEvent) {
+        OnlyCompletedMenuItem.setSelected(false);
+        OnlyIncompletedMenuItem.setSelected(false);
+        if(AllItemsMenuItem.isSelected()){
+            updateList(masterlist.list);
+        }
+    }
+
+    @FXML public void OnlyCompleteClicked(ActionEvent actionEvent) {
+        AllItemsMenuItem.setSelected(false);
+        OnlyIncompletedMenuItem.setSelected(false);
+        if(!OnlyCompletedMenuItem.isSelected()){
+            updateList(masterlist.list);
+            AllItemsMenuItem.setSelected(true);
+        } else {
+            updateList(masterlist.getComplete());
+        }
+    }
+
+    @FXML public void OnlyIncompletedClicked(ActionEvent actionEvent) {
+        AllItemsMenuItem.setSelected(false);
+        OnlyCompletedMenuItem.setSelected(false);
+        if(!OnlyIncompletedMenuItem.isSelected()){
+            updateList(masterlist.list);
+            AllItemsMenuItem.setSelected(true);
+        } else {
+            updateList(masterlist.getIncomplete());
+        }
     }
 
     @FXML public void HelpClicked(ActionEvent actionEvent){
         try{
-            Stage stage = null;
+            Stage stage = new Stage();
             sceneManager.makeScene(stage, "Help");
             stage.show();
         } catch (IOException e) {
@@ -65,11 +102,17 @@ public class ToDoListController {
     @FXML public TableColumn<Item, String> DueDateColumn;
 
     @FXML public void EditItemButtonClicked(ActionEvent actionEvent){
-        //todo editItemButtonClicked
+        int itemindex = ToDoListViewer.getSelectionModel().getSelectedIndex();
+        ItemDescField.setText(masterlist.getItem(itemindex).getDescription());
+        DueDateSelector.setValue(LocalDate.parse(masterlist.getItem(itemindex).getDuedate()));
+        CompletedButton.setSelected(masterlist.getItem(itemindex).getCompleted());
+        masterlist.deleteItem(masterlist.getItem(itemindex));
     }
 
     @FXML public void DeleteItemButtonClicked(ActionEvent actionEvent){
-        //todo DeleteItemButtonClicked
+        int index = ToDoListViewer.getSelectionModel().getSelectedIndex();
+        masterlist.deleteItem(masterlist.getItem(index));
+        updateList(masterlist.list);
     }
 
     //---------------------------------------------------------ADD ITEM PANE
@@ -79,19 +122,46 @@ public class ToDoListController {
     @FXML public Button AddItemButton;
 
     @FXML public void AddItemButtonClicked(ActionEvent actionEvent){
-        String desc = ItemDescField.getText();
-        String date = DueDateSelector.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE);
-        boolean status = CompletedButton.isSelected();
-        masterlist.addItem(new Item(desc, date, status));
-        updateList(masterlist);
+        if(validItem(ItemDescField.getText(), DueDateSelector.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE))){
+            String desc = ItemDescField.getText();
+            String date = DueDateSelector.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE);
+            boolean status = CompletedButton.isSelected();
+            masterlist.addItem(new Item(desc, date, status));
+            updateList(masterlist.list);
+            clearAddItemFields();
+        }
     }
 
-    public void updateList(ToDoList list){
-        ObservableList<Item> itemObservableList = FXCollections.observableList(masterlist.list);
+    public void updateList(List<Item> list){
+        ObservableList<Item> itemObservableList = FXCollections.observableList(list);
         ToDoListViewer.setItems(itemObservableList);
         CompletedColumn.setCellValueFactory(new PropertyValueFactory<>("completed"));
-        ItemDescColumn.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        ItemDescColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         DueDateColumn.setCellValueFactory(new PropertyValueFactory<>("duedate"));
+
+
+
+    }
+
+    public void clearAddItemFields(){
+        ItemDescField.clear();
+        DueDateSelector.setValue(null);
+        CompletedButton.setSelected(false);
+    }
+
+    public boolean validItem(String desc, String date){
+        Item item = new Item("falseItem", "1970-01-01", false);
+        if(!item.verifyDescription(desc)){
+            //todo throw bad desc error
+            return false;
+        }
+
+        if(!item.verifyDueDate(date)){
+            //todo throw bad duedate error
+            return false;
+        }
+
+        return true;
     }
 
 }

@@ -28,8 +28,8 @@ public class Item {
         return description;
     }
 
-    public boolean verifyDescription(String description){
-        return description.length() > 0 && description.length() < 257;
+    public boolean verifyDescription(String desc){
+        return desc.length() > 0 && desc.length() < 257;
     }
 
     public void setDuedate(String duedate) {
