@@ -31,13 +31,14 @@
             <Menu mnemonicParsing="false" text="Edit">
                 <MenuItem fx:id="ClearList" mnemonicParsing="false" onAction="#ClearListClicked" text="Clear List" />
             </Menu>
-         <Menu mnemonicParsing="false" text="View">
-           <items>
-               <CheckMenuItem fx:id="AllItemsMenuItem" mnemonicParsing="false" onAction="#ShowAllItemsClicked" selected="true" text="Show All Items" />
-               <CheckMenuItem fx:id="OnlyCompletedMenuItem" mnemonicParsing="false" onAction="#OnlyCompleteClicked" text="Show Only Complete" />
-               <CheckMenuItem fx:id="OnlyIncompletedMenuItem" mnemonicParsing="false" onAction="#OnlyIncompletedClicked" text="Show Only Incomplete" />
-           </items>
-         </Menu>
+            <Menu mnemonicParsing="false" text="View">
+                <CheckMenuItem fx:id="AllItemsMenuItem" mnemonicParsing="false" onAction="#ShowAllItemsClicked"
+                               selected="true" text="Show All Items"/>
+                <CheckMenuItem fx:id="OnlyCompletedMenuItem" mnemonicParsing="false" onAction="#OnlyCompleteClicked"
+                               text="Show Only Complete"/>
+                <CheckMenuItem fx:id="OnlyIncompletedMenuItem" mnemonicParsing="false"
+                               onAction="#OnlyIncompletedClicked" text="Show Only Incomplete"/>
+            </Menu>
             <Menu mnemonicParsing="false" text="Help">
                 <MenuItem fx:id="Help" mnemonicParsing="false" onAction="#HelpClicked" text="About" />
             </Menu>

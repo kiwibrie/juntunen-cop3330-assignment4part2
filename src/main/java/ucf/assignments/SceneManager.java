@@ -26,6 +26,4 @@ public class SceneManager {
         stage.setTitle(key);
         stage.setResizable(false);
     }
-
-
 }
