@@ -10,9 +10,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.Reader;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,33 +47,47 @@ public class ToDoList {
 
     public void saveList(String path){
         //using Gson
-        try {
-            File file = new File(path+"/ToDoList_savedlist"+hashCode()+".json");
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get(String.valueOf(file)));
+        Gson gson = new Gson();
+        File saveFile = new File(path+"/ToDoList.json");
+        if(!saveFile.exists()){
+            try {
+                File directory = new File(saveFile.getParent());
+                if(!directory.exists()){
+                    if(!directory.mkdirs()) System.out.println("error creating directories");
+                }
+                if(!saveFile.createNewFile()) System.out.println("error creating new file");
 
-            Map<String, Object> savedlist = new HashMap<>();
-            savedlist.put("title", getTitle());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            FileWriter writer = new FileWriter(saveFile.getAbsoluteFile());
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+
+            Map<String, Object> savinglist = new HashMap<>();
+            savinglist.put("title", this.getTitle());
 
             Map<String, Object> items = new HashMap<>();
             for(int i = 0; i < list.size(); i++){
                 Map<String, Object> item = new HashMap<>();
-                item.put("desc", list.get(i).getDescription());
-                item.put("duedate", list.get(i).getDuedate());
-                item.put("completed", list.get(i).getCompleted());
+                item.put("description", this.getItem(i).getDescription());
+                item.put("duedate", this.getItem(i).getDuedate());
+                item.put("completed", this.getItem(i).getCompleted());
                 items.put("item"+i, item);
             }
+            savinglist.put("all items", items);
 
-            Gson gson = new Gson();
+            bufferedWriter.write(gson.toJson(savinglist));
+            bufferedWriter.close();
 
-            writer.write(gson.toJson(savedlist));
-
-            writer.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public ToDoList loadList(String path) {
+    public void loadList(String path) {
         //using Gson
         try {
             Reader reader = Files.newBufferedReader(Paths.get(path));
@@ -88,19 +100,18 @@ public class ToDoList {
             for (JsonElement item : parser.get("items").getAsJsonArray()) {
                 JsonObject obj = item.getAsJsonObject();
                 Item createditem = new Item(
-                        obj.get("desc").getAsString(),
+                        obj.get("description").getAsString(),
                         obj.get("duedate").getAsString(),
                         obj.get("completed").getAsBoolean());
                 loadedlist.addItem(createditem);
             }
-            //MasterList.add(loadedlist);
+            this.list = loadedlist.list;
+            this.title = loadedlist.getTitle();
 
             reader.close();
-            return loadedlist;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
     }
 
     public void clearList(){

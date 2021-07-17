@@ -82,13 +82,13 @@ class ToDoListTest {
         ToDoList testsave = new ToDoList("TEST Save");
         testsave.addItem(new Item("item1", "19700101", false));
         testsave.addItem(new Item("item2", "20210711", true));
-        testsave.saveList("Downloads");
+        testsave.saveList("C:\\Users\\brian\\Documents\\Downloads");
         //todo savelist passes the test but doesnt actually save anything.
     }
 
     @Test
     public void loadlist(){
-        list.loadList("C:\\Users\\brian\\Desktop");
+        list.loadList("C:\\Users\\brian\\Documents\\Downloads\\ToDoList.json");
         System.out.print(list.getTitle());
     }
 

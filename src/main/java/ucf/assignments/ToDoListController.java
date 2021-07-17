@@ -41,11 +41,23 @@ public class ToDoListController {
     }
 
     @FXML public void SaveListClicked(ActionEvent actionEvent){
-        //todo SaveListClicked
+        try{
+            Stage stage = new Stage();
+            sceneManager.makeScene(stage, "Save List");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML public void LoadListClicked(ActionEvent actionEvent){
-        //todo LoadlistClicked
+        try{
+            Stage stage = new Stage();
+            sceneManager.makeScene(stage, "Load List");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML public void ClearListClicked(ActionEvent actionEvent){
