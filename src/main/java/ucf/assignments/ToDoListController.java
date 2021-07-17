@@ -14,10 +14,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Objects;
 
 public class ToDoListController {
-
     SceneManager sceneManager;
     ToDoList masterlist;
 
@@ -50,6 +48,14 @@ public class ToDoListController {
         }
     }
 
+    @FXML public Button SaveListButton;
+    @FXML public TextField PathTextBox;
+    @FXML public void SaveListButtonClicked(ActionEvent actionEvent){
+        masterlist.saveList(PathTextBox.getText());
+        Stage stage = (Stage) SaveListButton.getScene().getWindow();
+        stage.close();
+    }
+
     @FXML public void LoadListClicked(ActionEvent actionEvent){
         try{
             Stage stage = new Stage();
@@ -58,6 +64,14 @@ public class ToDoListController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML public Button LoadListButton;
+    @FXML public void LoadListButtonClicked(ActionEvent actionEvent){
+        masterlist.loadList(PathTextBox.getText());
+        updateList(masterlist.list);
+        Stage stage = (Stage) LoadListButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML public void ClearListClicked(ActionEvent actionEvent){

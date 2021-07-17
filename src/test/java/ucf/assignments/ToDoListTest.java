@@ -83,7 +83,6 @@ class ToDoListTest {
         testsave.addItem(new Item("item1", "19700101", false));
         testsave.addItem(new Item("item2", "20210711", true));
         testsave.saveList("C:\\Users\\brian\\Documents\\Downloads");
-        //todo savelist passes the test but doesnt actually save anything.
     }
 
     @Test

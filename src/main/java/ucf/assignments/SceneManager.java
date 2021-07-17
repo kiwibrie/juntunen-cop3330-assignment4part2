@@ -18,6 +18,8 @@ public class SceneManager {
         directory.put("Help", "Help.fxml");
         directory.put("Date Error", "ErrorDueDate.fxml");
         directory.put("Description Error", "ErrorDesc.fxml");
+        directory.put("Save List", "SaveList.fxml");
+        directory.put("Load List", "LoadList.fxml");
     }
 
     public void makeScene(Stage stage, String key) throws IOException {
