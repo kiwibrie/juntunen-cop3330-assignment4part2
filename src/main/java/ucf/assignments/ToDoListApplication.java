@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -24,14 +23,16 @@ public class ToDoListApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManagerApplication.fxml")));
+            ToDoListController listcontroller = new ToDoListController();
 
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManagerApplication.fxml")));
             Scene scene = new Scene(root);
 
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.setTitle("To Do List");
             primaryStage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -33,69 +33,69 @@ class ToDoListTest {
     @Test
     public void additem(){
         Item item = new Item("desc", "19700101", false);
-        list.AddItem(item);
+        list.addItem(item);
     }
 
     @Test
     public void deleteitem(){
         additem();
-        list.DeleteItem(list.getItem(0));
+        list.deleteItem(list.getItem(0));
         assertEquals(0, list.list.size());
     }
 
     @Test
     public void sortalpha(){
         Item shouldbefirst = new Item("alpha", "20210711", false);
-        list.AddItem(new Item("omega", "19700101", true));
-        list.AddItem(new Item("beta", "20210710", false));
-        list.AddItem(shouldbefirst);
-        assertEquals(shouldbefirst, list.SortListAlphabetical().get(0));
+        list.addItem(new Item("omega", "19700101", true));
+        list.addItem(new Item("beta", "20210710", false));
+        list.addItem(shouldbefirst);
+        assertEquals(shouldbefirst, list.sortListAlphabetical().get(0));
     }
 
     @Test
     public void sortduedate(){
         Item shouldbefirst = new Item("omega", "19700101", true);
-        list.AddItem(new Item("alpha", "20210711", false));
-        list.AddItem(new Item("beta", "20210710", false));
-        list.AddItem(shouldbefirst);
-        assertEquals(shouldbefirst, list.SortListDuedate().get(0));
+        list.addItem(new Item("alpha", "20210711", false));
+        list.addItem(new Item("beta", "20210710", false));
+        list.addItem(shouldbefirst);
+        assertEquals(shouldbefirst, list.sortListDuedate().get(0));
     }
 
     @Test
     public void getcomplete(){
-        list.AddItem(new Item("alpha", "20210711", false));
-        list.AddItem(new Item("beta", "20210710", false));
-        list.AddItem(new Item("omega", "19700101", true));
-        assertEquals(1, list.GetComplete().size());
+        list.addItem(new Item("alpha", "20210711", false));
+        list.addItem(new Item("beta", "20210710", false));
+        list.addItem(new Item("omega", "19700101", true));
+        assertEquals(1, list.getComplete().size());
     }
 
     @Test
     public void getincomplete(){
-        list.AddItem(new Item("alpha", "20210711", false));
-        list.AddItem(new Item("beta", "20210710", false));
-        list.AddItem(new Item("omega", "19700101", true));
-        assertEquals(2, list.GetIncomplete().size());
+        list.addItem(new Item("alpha", "20210711", false));
+        list.addItem(new Item("beta", "20210710", false));
+        list.addItem(new Item("omega", "19700101", true));
+        assertEquals(2, list.getIncomplete().size());
     }
 
     @Test
     public void savelist(){
         ToDoList testsave = new ToDoList("TEST Save");
-        testsave.AddItem(new Item("item1", "19700101", false));
-        testsave.AddItem(new Item("item2", "20210711", true));
-        testsave.SaveList("Downloads");
-        //todo savelist passes the test but doesnt actually save anything.
+        testsave.addItem(new Item("item1", "19700101", false));
+        testsave.addItem(new Item("item2", "20210711", true));
+        testsave.saveList("C:\\Users\\brian\\Documents\\Downloads");
     }
 
     @Test
     public void loadlist(){
-        list.LoadList("C:\\Users\\brian\\Desktop");
+        list.loadList("C:\\Users\\brian\\Documents\\Downloads\\ToDoList.json");
         System.out.print(list.getTitle());
     }
 
     @Test
     public void clearlist(){
         additem();
-        list.ClearList();
+        assertEquals(3, list.list.size());
+        list.clearList();
         assertEquals(0, list.list.size());
     }
 

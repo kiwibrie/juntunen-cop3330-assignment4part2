@@ -29,6 +29,19 @@ class ItemTest {
         assertNotEquals(teststring, item.getDescription());
         System.out.print(item.getDescription()+"\n");
     }
+    @Test
+    public void verifydesc(){
+        assertFalse(item.verifyDescription("THIS STRING IS 256 CHARACTERS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxLAST"
+                +"ADDING CHARACTERS FOR GOOD MEASURE")); //https://gist.github.com/hishma/10153402
+    }
+    @Test
+    public void verifydescagain(){
+        assertFalse(item.verifyDescription(""));
+    }
+    @Test
+    public void verifydescagainbutgoodthistime(){
+        assertTrue(item.verifyDescription("this is a good description"));
+    }
 
     @Test
     public void getduedate(){
@@ -38,6 +51,14 @@ class ItemTest {
     public void setduedate(){
         item.setDuedate("20210711");
         assertEquals("20210711", item.getDuedate());
+    }
+    @Test
+    public void verifyduedate(){
+        assertFalse(item.verifyDueDate("01-28-2002"));
+    }
+    @Test
+    public void verifyduedateagain(){
+        assertTrue(item.verifyDueDate("2002-01-28"));
     }
 
     @Test
