@@ -68,7 +68,7 @@ public class ToDoListController {
 
     @FXML public Button LoadListButton;
     @FXML public void LoadListButtonClicked(ActionEvent actionEvent){
-        masterlist.loadList(PathTextBox.getText());
+        masterlist = masterlist.loadList(PathTextBox.getText());
         updateList(masterlist.list);
         Stage stage = (Stage) LoadListButton.getScene().getWindow();
         stage.close();

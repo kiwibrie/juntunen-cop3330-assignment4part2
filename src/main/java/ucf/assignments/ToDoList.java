@@ -9,8 +9,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -87,10 +89,12 @@ public class ToDoList {
         }
     }
 
-    public void loadList(String path) {
+    public ToDoList loadList(String path) {
         //using Gson
         try {
-            Reader reader = Files.newBufferedReader(Paths.get(path));
+            Path genpath = Paths.get(path);
+            Path fullpath = genpath.toAbsolutePath();
+            Reader reader = Files.newBufferedReader(fullpath);
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
 
             String title = parser.get("title").getAsString();
@@ -109,9 +113,11 @@ public class ToDoList {
             this.title = loadedlist.getTitle();
 
             reader.close();
+            return loadedlist;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void clearList(){
